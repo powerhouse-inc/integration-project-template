@@ -22,6 +22,7 @@
         "document-model": "1.5.0",
         "document-model-libs": "1.59.0-arbitrum.4",
         "dotenv": "^16.4.5",
+        "uuidv4": "^6.2.13",
         "vite-node": "^1.6.0"
     },
     "devDependencies": {

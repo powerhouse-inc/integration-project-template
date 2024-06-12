@@ -11,12 +11,18 @@ import {
 import * as DocumentModelsLibs from 'document-model-libs/document-models';
 import { ArbLtipGranteeDocument, actions as arbActions, reducer as arbReducer } from 'document-model-libs/arb-ltip-grantee';
 import { DocumentModel } from "document-model/document";
+import { uuid } from "uuidv4"
 import dotenv from "dotenv";
 dotenv.config();
 
+const deleteFoldersAndFiles = async (driveServer: DocumentDriveServer, driveId: string) => {
+    const documents = await driveServer.getDocuments(driveId);
+    return Promise.all(documents.map(e => driveServer.deleteDocument(driveId, e)))
+}
 
 const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveName: string) => {
-    let docId = "2000"
+    let docId = uuid()
+    let folderId = uuid();
     let drive = await driveServer.getDrive(driveName);
     let document: ArbLtipGranteeDocument;
     try {
@@ -26,7 +32,7 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
         drive = reducer(
             drive,
             actions.addFolder({
-                id: '2', // make it random
+                id: folderId, // make it random
                 name: "Folder"
             })
         )
@@ -40,7 +46,7 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
                     id: docId,
                     name: 'document 1',
                     documentType: 'ArbLtipGrantee',
-                    parentFolder: '2', // get the random id from the folder
+                    parentFolder: folderId, // get the random id from the folder
                 },
                 ['global', 'local']
             )
