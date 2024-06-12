@@ -26,7 +26,7 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
         drive = reducer(
             drive,
             actions.addFolder({
-                id: '2',
+                id: '2', // make it random
                 name: "Folder"
             })
         )
@@ -40,6 +40,7 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
                     id: docId,
                     name: 'document 1',
                     documentType: 'ArbLtipGrantee',
+                    parentFolder: '2', // get the random id from the folder
                 },
                 ['global', 'local']
             )
@@ -134,12 +135,20 @@ async function main() {
         ], sharingType: "public", triggers: [], pullInterval: 100
     });
 
+    let synced = false;
+
     driveServer.on("syncStatus", async (driveId, syncStatus) => {
+
+        if (synced && syncStatus === "SUCCESS") {
+            return process.exit(0);
+        }
+
         if (driveId !== driveName || syncStatus !== "SUCCESS") {
             return;
         }
 
         await addFoldersAndDocuments(driveServer, driveName);
+        synced = true;
     })
 
 }
