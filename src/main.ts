@@ -5,10 +5,11 @@ import {
 import {
     utils as DocumentDriveUtils,
     reducer,
+    actions,
     DocumentDriveDocument
 } from 'document-model-libs/document-drive';
 import * as DocumentModelsLibs from 'document-model-libs/document-models';
-import { RealWorldAssetsDocument, actions as rwaActions, reducer as rwaReducer } from 'document-model-libs/real-world-assets';
+import { ArbLtipGranteeDocument, actions as arbActions, reducer as arbReducer } from 'document-model-libs/arb-ltip-grantee';
 import { DocumentModel } from "document-model/document";
 import dotenv from "dotenv";
 dotenv.config();
@@ -27,63 +28,91 @@ async function main() {
 
     // if remote document drive is given init remote drive otherwise add local drive
     const remoteDriveUrl = process.env.REMOTE_DOCUMENT_DRIVE ?? undefined
-    let drive: DocumentDriveDocument;
-    if (remoteDriveUrl) {
-        drive = await driveServer.addRemoteDrive(remoteDriveUrl, { availableOffline: true, listeners: [], sharingType: "private", triggers: [] });
-    } else {
-        drive = await driveServer.addDrive({
-            global: {
-                name: "Powerhouse Testdrive",
-                icon: null,
-                slug: "powerhouse-testdrive",
-                id: "powerhouse-testdrive"
-            },
-            local: {
-                availableOffline: true,
-                listeners: [],
-                sharingType: "private",
-                triggers: []
-            }
-        })
+    if (!remoteDriveUrl) {
+        throw new Error("Remote Drive not configured");
     }
 
-    // create new document on drive
-    drive = reducer(
-        drive,
-        DocumentDriveUtils.generateAddNodeAction(
-            drive.state.global,
-            {
-                id: '1.1',
-                name: 'document 1',
-                documentType: 'makerdao/rwa-portfolio'
-            },
-            ['global', 'local']
+    const driveName = remoteDriveUrl.split("/")!.slice(-1)[0];
+
+    let drive: DocumentDriveDocument;
+    drive = await driveServer.addRemoteDrive(remoteDriveUrl!, { availableOffline: true, listeners: [], sharingType: "public", triggers: [] });
+    driveServer.on("syncStatus", async (driveId, syncStatus) => {
+        if (driveId !== driveName || syncStatus !== "SUCCESS") {
+            return;
+        }
+
+        drive = await driveServer.getDrive(driveName);
+        console.log(drive.state.global);
+
+        // add folder
+        drive = reducer(
+            drive,
+            actions.addFolder({
+                id: '2',
+                name: "Folder"
+            })
         )
-    );
 
-    // queue drive operation
-    await driveServer.queueDriveOperation('powerhouse-testdrive', drive.operations.global[0]!);
+        // create new document in folder with generated sync unit
+        drive = reducer(
+            drive,
+            DocumentDriveUtils.generateAddNodeAction(
+                drive.state.global,
+                {
+                    id: '2.1',
+                    name: 'document 1',
+                    documentType: 'ArbLtipGrantee',
+                    parentFolder: "2"
+                },
+                ['global', 'local']
+            )
+        );
 
-    // retrieve new created document
-    let document = (await driveServer.getDocument(
-        'powerhouse-testdrive',
-        '1.1'
-    )) as RealWorldAssetsDocument;
+        // queue last 2 drive operations
+        const driveResult = await driveServer.addDriveOperations(driveName, drive.operations.global.slice(-2));
 
-    // create new operations with document model actions
-    document = rwaReducer(
-        document,
-        rwaActions.createAccount({ id: "abc", reference: "test", label: "123" })
-    );
+        // retrieve new created document
+        let document = (await driveServer.getDocument(
+            driveName,
+            '2.1'
+        )) as ArbLtipGranteeDocument;
 
-    document = rwaReducer(
-        document,
-        rwaActions.createAccount({ id: "abc2", reference: "test2", label: "1234" })
-    );
+        document = arbReducer(
+            document,
+            arbActions.initGrantee({
+                authorizedSignerAddress: "0x1AD3d72e54Fb0eB46e87F82f77B284FC8a66b16C",
+                disbursementContractAddress: "0x1AD3d72e54Fb0eB46e87F82f77B284FC8a66b16C",
+                fundingAddress: "0x1AD3d72e54Fb0eB46e87F82f77B284FC8a66b16C",
+                fundingType: ["EOA"],
+                granteeName: "Frank",
+                grantSize: 1_000_000,
+                grantSummary: "arbitrum import script for powerhouse",
+                matchingGrantSize: 1_000_000,
+                metricsDashboardLink: "https://arbgrants.com",
+                startDate: "2024-06-12T12:00:00Z",
+                numberOfPhases: 1,
+                phaseDuration: 1
+            })
+        );
 
-    // queue new created operations for processing
-    const result = await driveServer.queueOperations('powerhouse-testdrive', '1.1', document.operations.global);
-    console.log(result);
+        // create new operations with document model actions
+        // document = arbReducer(
+        //     document,
+        //     arbActions.addEditor({
+        //         editorAddress: "0x1AD3d72e54Fb0eB46e87F82f77B284FC8a66b16C"
+        //     })
+        // );
+
+
+        try {
+            // queue new created operations for processing
+            const result = await driveServer.addOperations(driveName, '2.1', document.operations.global.slice(-2));
+            console.log(result);
+        } catch (e) {
+            console.error(e);
+        }
+    })
+
 
 }
 
