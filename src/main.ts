@@ -100,47 +100,63 @@ async function main() {
     await driveServer.initialize();
 
     // if remote document drive is given init remote drive otherwise add local drive
-    const remoteDriveUrl = process.env.REMOTE_DOCUMENT_DRIVE ?? undefined
-    if (!remoteDriveUrl) {
-        throw new Error("Remote Drive not configured");
-    }
+    // const remoteDriveUrl = process.env.REMOTE_DOCUMENT_DRIVE ?? undefined
+    // if (!remoteDriveUrl) {
+    //     throw new Error("Remote Drive not configured");
+    // }
 
-    const driveName = remoteDriveUrl.split("/")!.slice(-1)[0];
+    let driveName = "arbitrum-testdrive"
 
-    if (!driveName) {
-        throw new Error("Could not extract drivename from remote Drive URL");
-    }
 
     let drive: DocumentDriveDocument;
-    drive = await driveServer.addRemoteDrive(remoteDriveUrl!, {
-        availableOffline: true, listeners: [
-            {
-                block: true,
-                callInfo: {
-                    data: remoteDriveUrl,
-                    name: 'switchboard-push',
-                    transmitterType: 'SwitchboardPush',
-                },
-                filter: {
-                    branch: ['main'],
-                    documentId: ['*'],
-                    documentType: ['*'],
-                    scope: ['global'],
-                },
-                label: 'Switchboard Sync',
-                listenerId: '1',
-                system: true,
-            },
-        ], sharingType: "public", triggers: [], pullInterval: 100
-    });
-
-    driveServer.on("syncStatus", async (driveId, syncStatus) => {
-        if (driveId !== driveName || syncStatus !== "SUCCESS") {
-            return;
+    drive = await driveServer.addDrive({
+        global: {
+            icon: null,
+            name: driveName,
+            id: driveName,
+            slug: driveName
+        },
+        local: {
+            availableOffline: true,
+            listeners: [],
+            sharingType: "private",
+            triggers: []
         }
-
-        await addFoldersAndDocuments(driveServer, driveName);
     })
+
+    await addFoldersAndDocuments(driveServer, driveName);
+    
+    
+    
+    // (remoteDriveUrl!, {
+    //     availableOffline: true, listeners: [
+    //         {
+    //             block: true,
+    //             callInfo: {
+    //                 data: remoteDriveUrl,
+    //                 name: 'switchboard-push',
+    //                 transmitterType: 'SwitchboardPush',
+    //             },
+    //             filter: {
+    //                 branch: ['main'],
+    //                 documentId: ['*'],
+    //                 documentType: ['*'],
+    //                 scope: ['global'],
+    //             },
+    //             label: 'Switchboard Sync',
+    //             listenerId: '1',
+    //             system: true,
+    //         },
+    //     ], sharingType: "public", triggers: [], pullInterval: 100
+    // });
+
+    // driveServer.on("syncStatus", async (driveId, syncStatus) => {
+    //     if (driveId !== driveName || syncStatus !== "SUCCESS") {
+    //         return;
+    //     }
+
+    //     await addFoldersAndDocuments(driveServer, driveName);
+    // })
 
 }
 
