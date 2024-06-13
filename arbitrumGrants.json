@@ -1,0 +1,35 @@
+[
+  {
+    "granteeName": "StableLab",
+    "startDate": "2024-06-10T20:19:00.111Z",
+    "grantSize": 1000000,
+    "authorizedSignerAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
+    "disbursementContractAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
+    "fundingAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
+    "fundingType": "EOA",
+    "metricsDashboardLink": "https://some.dashboard",
+    "grantSummary": ""
+  },
+  {
+    "granteeName": "Tiapdnw87@“",
+    "startDate": "2024-06-10T20:21:22.562Z",
+    "grantSize": 1000000,
+    "authorizedSignerAddress": "0xzz902676E4105e92Cc52DBf45fD93b274eC96611",
+    "disbursementContractAddress": "0xzz212676E4105e92Cc52DBf45fD93b274eC96621",
+    "fundingAddress": "0xzz212676E4105e92Cc52DBf45fD93b274eC96621",
+    "fundingType": "EOA",
+    "metricsDashboardLink": "https://some.dashboard",
+    "grantSummary": "This is a summary."
+  },
+  {
+    "granteeName": "Reserve Protocol",
+    "startDate": "2024-06-11T15:53:16.000Z",
+    "grantSize": 1000000,
+    "authorizedSignerAddress": "0xeB2e6DA6953f76a4422012b382b7E3cD2B3D38aA",
+    "disbursementContractAddress": "0x6cDc9C9D1E9017c36B51BdC3ef6CbFbF3B80545b",
+    "fundingAddress": "0x6cDc9C9D1E9017c36B51BdC3ef6CbFbF3B80545b",
+    "fundingType": "EOA",
+    "metricsDashboardLink": "https://dune.com/reserve-protocol/reserve-protocol-arbitrum-ltipp",
+    "grantSummary": "Reserve Protocol received 500k ARB from the LTIPP grant, which was matched with 20M RSR from ABC Labs. The funds will be streamed to RToken DEX pools and Lending markets as incentives to grow TVL"
+  }
+]

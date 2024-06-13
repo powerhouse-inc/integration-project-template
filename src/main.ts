@@ -11,8 +11,9 @@ import {
 import * as DocumentModelsLibs from 'document-model-libs/document-models';
 import { ArbLtipGranteeDocument, actions as arbActions, reducer as arbReducer } from 'document-model-libs/arb-ltip-grantee';
 import { DocumentModel } from "document-model/document";
-import { uuid } from "uuidv4"
+import { v4 as uuid } from "uuid";
 import dotenv from "dotenv";
+import grants from '../arbitrumGrants.json';
 dotenv.config();
 
 const deleteFoldersAndFiles = async (driveServer: DocumentDriveServer, driveId: string) => {
@@ -33,54 +34,69 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
             drive,
             actions.addFolder({
                 id: folderId, // make it random
-                name: "Folder"
+                name: "Grants"
             })
         )
+        await driveServer.addDriveOperations(driveName, drive.operations.global.slice(-1));
 
-        // create new document in folder with generated sync unit
-        drive = reducer(
-            drive,
-            DocumentDriveUtils.generateAddNodeAction(
-                drive.state.global,
-                {
-                    id: docId,
-                    name: 'document 1',
-                    documentType: 'ArbLtipGrantee',
-                    parentFolder: folderId, // get the random id from the folder
-                },
-                ['global', 'local']
-            )
-        );
+        for (let grant of grants) {
+            docId = uuid();
 
-        // queue last 2 drive operations
-        await driveServer.addDriveOperations(driveName, drive.operations.global.slice(-2));
+            // create new document in folder with generated sync unit
+            drive = reducer(
+                drive,
+                DocumentDriveUtils.generateAddNodeAction(
+                    drive.state.global,
+                    {
+                        id: docId,
+                        name: grant.granteeName || "Grantee",
+                        documentType: 'ArbLtipGrantee',
+                        parentFolder: folderId, // get the random id from the folder
+                    },
+                    ['global', 'local']
+                )
+            );
 
-        // retrieve new created document
-        document = (await driveServer.getDocument(
-            driveName,
-            docId
-        )) as ArbLtipGranteeDocument;
+            // queue last 2 drive operations
+            await driveServer.addDriveOperations(driveName, drive.operations.global.slice(-1));
+
+            // retrieve new created document
+            document = (await driveServer.getDocument(
+                driveName,
+                docId
+            )) as ArbLtipGranteeDocument;
+
+            // create gramt
+            document = arbReducer(
+                document,
+                arbActions.initGrantee({
+                    granteeName: grant.granteeName,
+                    startDate: grant.startDate,
+                    grantSize: grant.grantSize,
+                    authorizedSignerAddress: grant.authorizedSignerAddress,
+                    disbursementContractAddress: grant.disbursementContractAddress,
+                    fundingAddress: grant.fundingAddress,
+                    fundingType: ["EOA"],
+                    metricsDashboardLink: grant.metricsDashboardLink,
+                    grantSummary: grant.grantSummary,
+                    matchingGrantSize: grant.grantSize,
+                    numberOfPhases: 1,
+                    phaseDuration: 1
+                })
+            );
+
+            // queue new created operations for processing
+            const result = await driveServer.addOperations(driveName, docId, document.operations.global.slice(-1));
+            console.log('Adding grant', result.document?.state?.global?.granteeName);
+
+        }
+
+
+
+
     }
 
-
-    document = arbReducer(
-        document,
-        arbActions.initGrantee({
-            authorizedSignerAddress: "0x1AD3d72e54Fb0eB46e87F82f77B284FC8a66b16C",
-            disbursementContractAddress: "0x1AD3d72e54Fb0eB46e87F82f77B284FC8a66b16C",
-            fundingAddress: "0x1AD3d72e54Fb0eB46e87F82f77B284FC8a66b16C",
-            fundingType: ["EOA"],
-            granteeName: "Frank",
-            grantSize: 1_000_000,
-            grantSummary: "arbitrum import script for powerhouse",
-            matchingGrantSize: 1_000_000,
-            metricsDashboardLink: "https://arbgrants.com",
-            startDate: "2024-06-12T12:00:00Z",
-            numberOfPhases: 1,
-            phaseDuration: 1
-        })
-    );
-
+   
     // create new operations with document model actions
     // document = arbReducer(
     //     document,
@@ -89,9 +105,9 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
     //     })
     // );
 
-    // queue new created operations for processing
-    const result = await driveServer.addOperations(driveName, docId, document.operations.global.slice(-2));
-    console.log(result.document?.state);
+    // // queue new created operations for processing
+    // const result = await driveServer.addOperations(driveName, docId, document.operations.global.slice(-2));
+    // console.log(result.document?.state);
 
 }
 
