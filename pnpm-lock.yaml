@@ -17,6 +17,9 @@ dependencies:
   dotenv:
     specifier: ^16.4.5
     version: 16.4.5
+  uuid:
+    specifier: ^10.0.0
+    version: 10.0.0
   uuidv4:
     specifier: ^6.2.13
     version: 6.2.13
@@ -6137,6 +6140,11 @@ packages:
       is-generator-function: 1.0.10
       is-typed-array: 1.1.13
       which-typed-array: 1.1.15
+    dev: false
+
+  /uuid@10.0.0:
+    resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+    hasBin: true
     dev: false
 
   /uuid@8.3.2:
