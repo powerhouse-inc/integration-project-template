@@ -9,7 +9,7 @@ import {
     DocumentDriveDocument
 } from 'document-model-libs/document-drive';
 import * as DocumentModelsLibs from 'document-model-libs/document-models';
-import { ArbLtipGranteeDocument, actions as arbActions, reducer as arbReducer } from 'document-model-libs/arb-ltip-grantee';
+import { ArbitrumLtipGranteeDocument, actions as arbActions, reducer as arbReducer } from 'document-model-libs/arbitrum-ltip-grantee';
 import { DocumentModel } from "document-model/document";
 import { v4 as uuid } from "uuid";
 import dotenv from "dotenv";
@@ -25,9 +25,9 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
     let docId = uuid()
     let folderId = uuid();
     let drive = await driveServer.getDrive(driveName);
-    let document: ArbLtipGranteeDocument;
+    let document: ArbitrumLtipGranteeDocument;
     try {
-        document = (await driveServer.getDocument(driveName, docId)) as ArbLtipGranteeDocument
+        document = (await driveServer.getDocument(driveName, docId)) as ArbitrumLtipGranteeDocument
     } catch (e) {
         // add folder
         drive = reducer(
@@ -37,7 +37,8 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
                 name: "Grants"
             })
         )
-        await driveServer.addDriveOperations(driveName, drive.operations.global.slice(-1));
+        await driveServer.queueDriveOperations(driveName, drive.operations.global.slice(-1));
+
 
         for (let grant of grants) {
             docId = uuid();
@@ -50,21 +51,23 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
                     {
                         id: docId,
                         name: grant.granteeName || "Grantee",
-                        documentType: 'ArbLtipGrantee',
+                        documentType: 'arbitrum/ltip-grantee',
                         parentFolder: folderId, // get the random id from the folder
                     },
                     ['global', 'local']
                 )
             );
 
-            // queue last 2 drive operations
-            await driveServer.addDriveOperations(driveName, drive.operations.global.slice(-1));
+            // queue last 1 drive operations
+            // await driveServer.addDriveOperations(driveName, drive.operations.global.slice(-1));
+            const driveOperations = drive.operations.global.slice(-1);
+            const response = await driveServer.queueDriveOperations(driveName, driveOperations);
 
             // retrieve new created document
             document = (await driveServer.getDocument(
                 driveName,
                 docId
-            )) as ArbLtipGranteeDocument;
+            )) as ArbitrumLtipGranteeDocument;
 
             // create gramt
             document = arbReducer(
@@ -86,17 +89,16 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
             );
 
             // queue new created operations for processing
-            const result = await driveServer.addOperations(driveName, docId, document.operations.global.slice(-1));
+            // const result = await driveServer.addOperations(driveName, docId, document.operations.global.slice(-1));
+            const result = await driveServer.queueOperations(driveName, docId, document.operations.global.slice(-1));
             console.log('Adding grant', result.document?.state?.global?.granteeName);
-
+            // let resultDrive = await driveServer.getDrive(driveName);
+            // console.log('Drive:', resultDrive)
         }
-
-
-
 
     }
 
-   
+
     // create new operations with document model actions
     // document = arbReducer(
     //     document,
