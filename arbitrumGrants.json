@@ -1,35 +1,46 @@
 [
   {
-    "granteeName": "StableLab",
     "startDate": "2024-06-10T20:19:00.111Z",
-    "grantSize": 1000000,
-    "authorizedSignerAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
+    "email": "matt@stablelab.xyz",
+    "granteeName": "stablelab",
+    "grantSize": 0,
+    "editorAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
     "disbursementContractAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
     "fundingAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
-    "fundingType": "EOA",
-    "metricsDashboardLink": "https://some.dashboard",
-    "grantSummary": ""
+    "metricsDashboardLink": "n/a",
+    "grantSummary": "n/a"
   },
   {
-    "granteeName": "Something else here",
-    "startDate": "2024-06-11T15:53:16.000Z",
-    "grantSize": 1000000,
-    "authorizedSignerAddress": "0xeB2e6DA6953f76a4422012b382b7E3cD2B3D38aA",
-    "disbursementContractAddress": "0x6cDc9C9D1E9017c36B51BdC3ef6CbFbF3B80545b",
-    "fundingAddress": "0x6cDc9C9D1E9017c36B51BdC3ef6CbFbF3B80545b",
-    "fundingType": "EOA",
-    "metricsDashboardLink": "https://dune.com/reserve-protocol/reserve-protocol-arbitrum-ltipp",
-    "grantSummary": "STH Protocol received 500k ARB from the LTIPP grant, which was matched with 20M RSR from ABC Labs. The funds will be streamed to RToken DEX pools and Lending markets as incentives to grow TVL"
-  },
-  {
+    "startDate": "2024-06-11T15:53:16.303Z",
+    "email": "griffin.peer@gmail.com",
     "granteeName": "Reserve Protocol",
-    "startDate": "2024-06-11T15:53:16.000Z",
-    "grantSize": 1000000,
-    "authorizedSignerAddress": "0xeB2e6DA6953f76a4422012b382b7E3cD2B3D38aA",
+    "grantSize": 0,
+    "editorAddress": "0x5f6494BF57581cB2f3FaDbb9A2e82ee6F85DC1CD, arb1:0xeB2e6DA6953f76a4422012b382b7E3cD2B3D38aA, arb1:0x548854cc4cdf89b534ebCd6094CFBf18BB053286",
     "disbursementContractAddress": "0x6cDc9C9D1E9017c36B51BdC3ef6CbFbF3B80545b",
     "fundingAddress": "0x6cDc9C9D1E9017c36B51BdC3ef6CbFbF3B80545b",
-    "fundingType": "EOA",
     "metricsDashboardLink": "https://dune.com/reserve-protocol/reserve-protocol-arbitrum-ltipp",
     "grantSummary": "Reserve Protocol received 500k ARB from the LTIPP grant, which was matched with 20M RSR from ABC Labs. The funds will be streamed to RToken DEX pools and Lending markets as incentives to grow TVL"
-  }
+  },
+  {
+    "startDate": "2024-06-12T17:36:48.501Z",
+    "email": "yakcontributors@proton.me",
+    "granteeName": "Yield Yak",
+    "grantSize": 190000,
+    "editorAddress": "0x96eA6C538F76694ED18989A44B39af868dA2351a, 0x4daBe297e1e507d316B47fa54DBC188DEfd07dB0 ",
+    "disbursementContractAddress": "0x5925C5c6843A8F67f7Ef2b55Db1f5491573C85Eb",
+    "fundingAddress": "0x5925C5c6843A8F67f7Ef2b55Db1f5491573C85Eb",
+    "metricsDashboardLink": "https://dune.com/yield_yak/yield-yak-arbitrum-ltipp",
+    "grantSummary": "Yield Yak has received 195,000 ARB.  15,000 ARB to be awarded as gas refunds for Yak Swap users, and up to 180,000 ARB to be distributed to depositors in selected Yield Yak DeFi strategies.  ARB rewards increase as key TVL milestones are reached. "
+  },
+  {
+    "startDate": "2024-06-12T18:04:03.843Z",
+    "email": "soheeb@contrax.finance",
+    "granteeName": "Contrax",
+    "grantSize": 39000,
+    "editorAddress": "0x240AEDcD6A9fD9f3CA1fE0ED2e122dA87f5836f1",
+    "disbursementContractAddress": "arb1:0xCb410A689A03E06de0a6247b13C13D14237DecC8",
+    "fundingAddress": "0xD516B69611B0DC2744f7d2A384592ABeB8C8e956",
+    "metricsDashboardLink": "https://dune.com/abdulrafaycontrax/contrax-finance",
+    "grantSummary": "The grant is for two purposes: increasing APYs via auto-compounding, and also providing additional ARB for stakers who stay within the vaults for the entire grant. See details in our LTIPP proposal."
+  }  
 ]
