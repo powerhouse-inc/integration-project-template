@@ -21,6 +21,7 @@ const deleteFoldersAndFiles = async (driveServer: DocumentDriveServer, driveId: 
     return Promise.all(documents.map(e => driveServer.deleteDocument(driveId, e)))
 }
 
+
 const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveName: string) => {
     let docId = uuid()
     let folderId = uuid();
@@ -39,8 +40,9 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
         )
         await driveServer.queueDriveOperations(driveName, drive.operations.global.slice(-1));
 
+        const parsedGrants = cleanJSON(grants);
 
-        for (let grant of grants) {
+        for (let grant of parsedGrants) {
             docId = uuid();
 
             // create new document in folder with generated sync unit
@@ -69,6 +71,12 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
                 docId
             )) as ArbitrumLtipGranteeDocument;
 
+            let authorizedSignerAddresses = grant.authorizedSignerAddress;
+            if (Array.isArray(grant.authorizedSignerAddress)) {
+                authorizedSignerAddresses = grant.authorizedSignerAddress.join(', ');
+            }
+
+
             // create gramt
             document = arbReducer(
                 document,
@@ -76,7 +84,7 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
                     granteeName: grant.granteeName,
                     startDate: grant.startDate,
                     grantSize: grant.grantSize,
-                    authorizedSignerAddress: grant.authorizedSignerAddress,
+                    authorizedSignerAddress: authorizedSignerAddresses,
                     disbursementContractAddress: grant.disbursementContractAddress,
                     fundingAddress: grant.fundingAddress,
                     fundingType: ["EOA"],
@@ -177,4 +185,36 @@ async function main() {
 
 }
 
-main();
+const cleanJSON = (json: any) => {
+    const parsedGrants = grants.map((grant: any) => {
+        let grantSize = grant.grantSize;
+        if (typeof grant.grantSize == 'string') {
+            grantSize = parseInt(grant.grantSize.match(/\d+/)[0], 10);
+        }
+        const editorAddresses = grant.editorAddress.split(',')
+            .map((address: string) => {
+                const trimAddress = address.trim();
+                const cleanAddress = trimAddress.match(/0x[a-fA-F0-9]{40}/);
+                return cleanAddress ? cleanAddress[0] : '';
+            })
+
+        let fundingAddress = grant.fundingAddress;
+        if (Array.isArray(grant.fundingAddress)) {
+            fundingAddress = grant.fundingAddress[0].match(/0x[a-fA-F0-9]{40}/);
+        }
+
+        return {
+            granteeName: grant.granteeName,
+            startDate: grant.startDate,
+            grantSize,
+            authorizedSignerAddress: editorAddresses,
+            disbursementContractAddress: grant.disbursementContractAddress.match(/0x[a-fA-F0-9]{40}/)[0] || '',
+            fundingAddress: fundingAddress,
+            metricsDashboardLink: grant.metricsDashboardLink,
+            grantSummary: grant.grantSummary
+        }
+    })
+    return parsedGrants;
+}
+
+   main();
