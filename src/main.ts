@@ -27,130 +27,142 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
     let folderId = uuid();
     let drive = await driveServer.getDrive(driveName);
     let document: ArbitrumLtipGranteeDocument;
-    try {
-        document = (await driveServer.getDocument(driveName, docId)) as ArbitrumLtipGranteeDocument
-    } catch (e) {
-        // add folder
+
+    const parsedGrants = cleanJSON(grants);
+    // sort alphabetically the json by granteeName
+
+    const sortedGrants = parsedGrants.sort((a: any, b: any) => {
+        if (a.granteeName.toUpperCase() < b.granteeName.toUpperCase()) {
+            return -1;
+        }
+        return 1;
+    })
+
+    // Define folder names and ranges
+    const folderRanges = ["A-F", "G-L", "M-R", "S-Z"];
+    const folders = folderRanges.map(range => ({
+        id: uuid(),
+        name: `Grants ${range}`
+    }));
+
+    // Create folders
+    for (const folder of folders) {
         drive = reducer(
             drive,
             actions.addFolder({
-                id: folderId, // make it random
-                name: "Grants"
+                id: folder.id,
+                name: folder.name
             })
-        )
+        );
         await driveServer.queueDriveOperations(driveName, drive.operations.global.slice(-1));
-
-        const parsedGrants = cleanJSON(grants);
-
-        for (let grant of parsedGrants) {
-            docId = uuid();
-
-            // create new document in folder with generated sync unit
-            drive = reducer(
-                drive,
-                DocumentDriveUtils.generateAddNodeAction(
-                    drive.state.global,
-                    {
-                        id: docId,
-                        name: grant.granteeName || "Grantee",
-                        documentType: 'arbitrum/ltip-grantee',
-                        parentFolder: folderId, // get the random id from the folder
-                    },
-                    ['global', 'local']
-                )
-            );
-
-            // queue last 1 drive operations
-            // await driveServer.addDriveOperations(driveName, drive.operations.global.slice(-1));
-            const driveOperations = drive.operations.global.slice(-1);
-            await driveServer.queueDriveOperations(driveName, driveOperations);
-
-            // retrieve new created document
-            document = (await driveServer.getDocument(
-                driveName,
-                docId
-            )) as ArbitrumLtipGranteeDocument;
-
-            let authorizedSignerAddresses = grant.authorizedSignerAddress;
-            if (Array.isArray(grant.authorizedSignerAddress)) {
-                authorizedSignerAddresses = grant.authorizedSignerAddress.join(', ');
-            }
-
-            const grantee: InitGranteeInput = {
-                granteeName: grant.granteeName,
-                startDate: grant.startDate,
-                grantSize: grant.grantSize,
-                authorizedSignerAddress: grant.authorizedSignerAddress[0],
-                disbursementContractAddress: grant.disbursementContractAddress,
-                fundingAddress: grant.fundingAddress,
-                fundingType: ["EOA"],
-                metricsDashboardLink: grant.metricsDashboardLink,
-                grantSummary: grant.grantSummary,
-                matchingGrantSize: grant.grantSize,
-                numberOfPhases: 1,
-                phaseDuration: 1
-            }
-
-            console.log(grantee)
-
-            // create gramt
-            document = arbReducer(
-                document,
-                arbActions.initGrantee(grantee)
-            );
-
-            // add editor addresses
-            for (let editorAddress of grant.authorizedSignerAddress) {
-                const signer: ActionSigner = {
-                    app: {
-                        name: 'Connect',
-                        key: '',
-                    },
-                    user: {
-                        address: grant.authorizedSignerAddress[0],
-                        networkId: "1",
-                        chainId: 1,
-                    },
-                    signature: '',
-                };
-
-
-                const newVar = arbActions.addEditor({ editorAddress })
-
-                document = arbReducer(
-                    document,
-                    { ...newVar, context: { signer } }
-                );
-            }
-
-            console.log('document', document.state.global)
-
-            // queue new created operations for processing
-            // const result = await driveServer.addOperations(driveName, docId, document.operations.global.slice(-1));
-            const result = await driveServer.queueOperations(driveName, docId, document.operations.global.slice(-1 * (1 + grant.authorizedSignerAddress.length)));
-            console.log('Adding grant', result.document?.state?.global?.granteeName);
-            // let resultDrive = await driveServer.getDrive(driveName);
-            // console.log('Drive:', resultDrive)
-        }
-
     }
 
 
-    // create new operations with document model actions
-    // document = arbReducer(
-    //     document,
-    //     arbActions.addEditor({
-    //         editorAddress: "0x1AD3d72e54Fb0eB46e87F82f77B284FC8a66b16C"
-    //     })
-    // );
 
-    // // queue new created operations for processing
-    // const result = await driveServer.addOperations(driveName, docId, document.operations.global.slice(-2));
-    // console.log(result.document?.state);
+    for (let grant of sortedGrants) {
+        docId = uuid();
+
+        // Determine the correct folder based on the first letter of granteeName
+        const firstLetter = grant.granteeName.toUpperCase().charAt(0);
+        let folderId;
+        if (firstLetter >= 'A' && firstLetter <= 'F') {
+            folderId = folders[0].id;
+        } else if (firstLetter >= 'G' && firstLetter <= 'L') {
+            folderId = folders[1].id;
+        } else if (firstLetter >= 'M' && firstLetter <= 'R') {
+            folderId = folders[2].id;
+        } else { // S-Z
+            folderId = folders[3].id;
+        }
+
+        // create new document in folder with generated sync unit
+        drive = reducer(
+            drive,
+            DocumentDriveUtils.generateAddNodeAction(
+                drive.state.global,
+                {
+                    id: docId,
+                    name: grant.granteeName || "Grantee",
+                    documentType: 'arbitrum/ltip-grantee',
+                    parentFolder: folderId, // get the random id from the folder
+                },
+                ['global', 'local']
+            )
+        );
+
+        // queue last 1 drive operations
+        const driveOperations = drive.operations.global.slice(-1);
+        await driveServer.queueDriveOperations(driveName, driveOperations);
+
+        // retrieve new created document
+        document = (await driveServer.getDocument(
+            driveName,
+            docId
+        )) as ArbitrumLtipGranteeDocument;
+
+        let authorizedSignerAddresses = grant.authorizedSignerAddress;
+        if (Array.isArray(grant.authorizedSignerAddress)) {
+            authorizedSignerAddresses = grant.authorizedSignerAddress.join(', ');
+        }
+
+        const grantee: InitGranteeInput = {
+            granteeName: grant.granteeName,
+            startDate: grant.startDate,
+            grantSize: grant.grantSize,
+            authorizedSignerAddress: grant.authorizedSignerAddress[0],
+            disbursementContractAddress: grant.disbursementContractAddress,
+            fundingAddress: grant.fundingAddress,
+            fundingType: ["EOA"],
+            metricsDashboardLink: grant.metricsDashboardLink,
+            grantSummary: grant.grantSummary,
+            matchingGrantSize: grant.grantSize,
+            numberOfPhases: 1,
+            phaseDuration: 1
+        }
+
+        console.log(grantee)
+
+        // create gramt
+        document = arbReducer(
+            document,
+            arbActions.initGrantee(grantee)
+        );
+
+        // add editor addresses
+        for (let editorAddress of grant.authorizedSignerAddress) {
+            const signer: ActionSigner = {
+                app: {
+                    name: 'Connect',
+                    key: '',
+                },
+                user: {
+                    address: grant.authorizedSignerAddress[0],
+                    networkId: "eip155",
+                    chainId: 42161,
+                },
+                signature: '',
+            };
+
+
+            const newVar = arbActions.addEditor({ editorAddress })
+
+            document = arbReducer(
+                document,
+                { ...newVar, context: { signer } }
+            );
+        }
+
+        console.log('document', document.state.global)
+
+        // queue new created operations for processing
+        const result = await driveServer.queueOperations(driveName, docId, document.operations.global.slice(-1 * (1 + grant.authorizedSignerAddress.length)));
+        console.log('Adding grant', result.document?.state?.global?.granteeName);
+    }
 
 }
 
 async function main() {
+    console.time('script');
     // select document models
     const documentModels = [
         DocumentModelLib,
@@ -174,6 +186,7 @@ async function main() {
     }
 
     let drive: DocumentDriveDocument;
+    const listenerId = uuid();
     drive = await driveServer.addRemoteDrive(remoteDriveUrl!, {
         availableOffline: true, listeners: [
             {
@@ -190,7 +203,7 @@ async function main() {
                     scope: ['global'],
                 },
                 label: 'Switchboard Sync',
-                listenerId: '1',
+                listenerId,
                 system: true,
             },
         ], sharingType: "public", triggers: [], pullInterval: 100
@@ -200,16 +213,20 @@ async function main() {
 
     driveServer.on("syncStatus", async (driveId, syncStatus) => {
 
-        if (synced && syncStatus === "SUCCESS") {
-            return process.exit(0);
+        if (synced) {
+            return;
         }
 
         if (driveId !== driveName || syncStatus !== "SUCCESS") {
             return;
         }
 
-        await addFoldersAndDocuments(driveServer, driveName);
         synced = true;
+        await addFoldersAndDocuments(driveServer, driveName);
+        await driveServer.addDriveAction(drive.state.global.id, actions.removeListener({ listenerId }));
+        console.timeEnd('script');
+        process.exit(0);
+
     })
 
 }
@@ -227,9 +244,9 @@ const cleanJSON = (json: any) => {
                 return cleanAddress ? cleanAddress[0] : '';
             })
 
-        let fundingAddress = grant.fundingAddress;
-        if (Array.isArray(grant.fundingAddress)) {
-            fundingAddress = grant.fundingAddress[0].match(/0x[a-fA-F0-9]{40}/);
+        let fundingAddress = grant.fundingAddress.match(/0x[a-fA-F0-9]{40}/)
+        if (!fundingAddress) {
+            return null;
         }
 
         return {
@@ -238,12 +255,13 @@ const cleanJSON = (json: any) => {
             grantSize,
             authorizedSignerAddress: editorAddresses,
             disbursementContractAddress: grant.disbursementContractAddress.match(/0x[a-fA-F0-9]{40}/)[0] || '',
-            fundingAddress: fundingAddress,
+            fundingAddress: fundingAddress[0],
             metricsDashboardLink: grant.metricsDashboardLink,
             grantSummary: grant.grantSummary
         }
     })
-    return parsedGrants;
+
+    return parsedGrants.filter((grant: any) => grant !== null);
 }
 
 main();
