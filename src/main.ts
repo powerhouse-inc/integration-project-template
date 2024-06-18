@@ -10,7 +10,7 @@ import {
 } from 'document-model-libs/document-drive';
 import * as DocumentModelsLibs from 'document-model-libs/document-models';
 import { ArbitrumLtipGranteeDocument, actions as arbActions, reducer as arbReducer, InitGranteeInput } from 'document-model-libs/arbitrum-ltip-grantee';
-import { DocumentModel } from "document-model/document";
+import { ActionSigner, DocumentModel } from "document-model/document";
 import { v4 as uuid } from "uuid";
 import dotenv from "dotenv";
 import grants from '../arbitrumGrants.json';
@@ -101,12 +101,25 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
 
             // add editor addresses
             for (let editorAddress of grant.authorizedSignerAddress) {
+                const signer: ActionSigner = {
+                    app: {
+                        name: 'Connect',
+                        key: '',
+                    },
+                    user: {
+                        address: grant.authorizedSignerAddress[0],
+                        networkId: "1",
+                        chainId: 1,
+                    },
+                    signature: '',
+                };
+
 
                 const newVar = arbActions.addEditor({ editorAddress })
 
                 document = arbReducer(
                     document,
-                    {...newVar, context: {signer: {user: {address: grant.authorizedSignerAddress[0], chainId: 1, networkId: '1'}}}}
+                    { ...newVar, context: { signer } }
                 );
             }
 
