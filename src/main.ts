@@ -216,9 +216,9 @@ async function main() {
 
 const cleanJSON = (json: any) => {
     const parsedGrants = grants.map((grant: any) => {
-        let grantSize = grant.grantSize;
+        let grantSize = grant.grantSize == 0 ? 1 : grant.grantSize;
         if (typeof grant.grantSize == 'string') {
-            grantSize = parseFloat(grant.grantSize.match(/\d+/)[0]);
+            grantSize = parseFloat(grant.grantSize.match(/\d+/)[0] == 0 ? 1 : grant.grantSize.match(/\d+/)[0]);
         }
         const editorAddresses = grant.editorAddress.split(',')
             .map((address: string) => {
