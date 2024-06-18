@@ -116,8 +116,8 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
             metricsDashboardLink: grant.metricsDashboardLink,
             grantSummary: grant.grantSummary,
             matchingGrantSize: grant.grantSize,
-            numberOfPhases: 1,
-            phaseDuration: 1
+            numberOfPhases: 8,
+            phaseDuration: 14
         }
 
         console.log(grantee)
