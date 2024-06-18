@@ -3,18 +3,18 @@
     "startDate": "2024-06-10T20:19:00.111Z",
     "email": "matt@stablelab.xyz",
     "granteeName": "stablelab",
-    "grantSize": 0,
+    "grantSize": 1,
     "editorAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
     "disbursementContractAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
     "fundingAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
-    "metricsDashboardLink": "n/a",
-    "grantSummary": "n/a"
+    "metricsDashboardLink": "",
+    "grantSummary": ""
   },
   {
     "startDate": "2024-06-11T15:53:16.303Z",
     "email": "griffin.peer@gmail.com",
     "granteeName": "Reserve Protocol",
-    "grantSize": 0,
+    "grantSize": 1,
     "editorAddress": "0x5f6494BF57581cB2f3FaDbb9A2e82ee6F85DC1CD, arb1:0xeB2e6DA6953f76a4422012b382b7E3cD2B3D38aA, arb1:0x548854cc4cdf89b534ebCd6094CFBf18BB053286",
     "disbursementContractAddress": "0x6cDc9C9D1E9017c36B51BdC3ef6CbFbF3B80545b",
     "fundingAddress": "0x6cDc9C9D1E9017c36B51BdC3ef6CbFbF3B80545b",

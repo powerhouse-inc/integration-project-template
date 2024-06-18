@@ -9,7 +9,7 @@ import {
     DocumentDriveDocument
 } from 'document-model-libs/document-drive';
 import * as DocumentModelsLibs from 'document-model-libs/document-models';
-import { ArbitrumLtipGranteeDocument, actions as arbActions, reducer as arbReducer } from 'document-model-libs/arbitrum-ltip-grantee';
+import { ArbitrumLtipGranteeDocument, actions as arbActions, reducer as arbReducer, InitGranteeInput } from 'document-model-libs/arbitrum-ltip-grantee';
 import { DocumentModel } from "document-model/document";
 import { v4 as uuid } from "uuid";
 import dotenv from "dotenv";
@@ -63,7 +63,7 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
             // queue last 1 drive operations
             // await driveServer.addDriveOperations(driveName, drive.operations.global.slice(-1));
             const driveOperations = drive.operations.global.slice(-1);
-            const response = await driveServer.queueDriveOperations(driveName, driveOperations);
+            await driveServer.queueDriveOperations(driveName, driveOperations);
 
             // retrieve new created document
             document = (await driveServer.getDocument(
@@ -76,29 +76,45 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
                 authorizedSignerAddresses = grant.authorizedSignerAddress.join(', ');
             }
 
+            const grantee: InitGranteeInput = {
+                granteeName: grant.granteeName,
+                startDate: grant.startDate,
+                grantSize: grant.grantSize,
+                authorizedSignerAddress: grant.authorizedSignerAddress[0],
+                disbursementContractAddress: grant.disbursementContractAddress,
+                fundingAddress: grant.fundingAddress,
+                fundingType: ["EOA"],
+                metricsDashboardLink: grant.metricsDashboardLink,
+                grantSummary: grant.grantSummary,
+                matchingGrantSize: grant.grantSize,
+                numberOfPhases: 1,
+                phaseDuration: 1
+            }
+
+            console.log(grantee)
 
             // create gramt
             document = arbReducer(
                 document,
-                arbActions.initGrantee({
-                    granteeName: grant.granteeName,
-                    startDate: grant.startDate,
-                    grantSize: grant.grantSize,
-                    authorizedSignerAddress: authorizedSignerAddresses,
-                    disbursementContractAddress: grant.disbursementContractAddress,
-                    fundingAddress: grant.fundingAddress,
-                    fundingType: ["EOA"],
-                    metricsDashboardLink: grant.metricsDashboardLink,
-                    grantSummary: grant.grantSummary,
-                    matchingGrantSize: grant.grantSize,
-                    numberOfPhases: 1,
-                    phaseDuration: 1
-                })
+                arbActions.initGrantee(grantee)
             );
+
+            // add editor addresses
+            for (let editorAddress of grant.authorizedSignerAddress) {
+
+                const newVar = arbActions.addEditor({ editorAddress })
+
+                document = arbReducer(
+                    document,
+                    {...newVar, context: {signer: {user: {address: grant.authorizedSignerAddress[0], chainId: 1, networkId: '1'}}}}
+                );
+            }
+
+            console.log('document', document.state.global)
 
             // queue new created operations for processing
             // const result = await driveServer.addOperations(driveName, docId, document.operations.global.slice(-1));
-            const result = await driveServer.queueOperations(driveName, docId, document.operations.global.slice(-1));
+            const result = await driveServer.queueOperations(driveName, docId, document.operations.global.slice(-1 * (1 + grant.authorizedSignerAddress.length)));
             console.log('Adding grant', result.document?.state?.global?.granteeName);
             // let resultDrive = await driveServer.getDrive(driveName);
             // console.log('Drive:', resultDrive)
@@ -189,7 +205,7 @@ const cleanJSON = (json: any) => {
     const parsedGrants = grants.map((grant: any) => {
         let grantSize = grant.grantSize;
         if (typeof grant.grantSize == 'string') {
-            grantSize = parseInt(grant.grantSize.match(/\d+/)[0], 10);
+            grantSize = parseFloat(grant.grantSize.match(/\d+/)[0]);
         }
         const editorAddresses = grant.editorAddress.split(',')
             .map((address: string) => {
@@ -217,4 +233,4 @@ const cleanJSON = (json: any) => {
     return parsedGrants;
 }
 
-   main();
+main();
