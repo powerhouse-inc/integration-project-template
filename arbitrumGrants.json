@@ -761,7 +761,7 @@
     "granteeName": "Symbiosis ",
     "grantSize": 50000,
     "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
-    "editorAddress": "Arbitrum One: 0xf7e96217347667064DEE8f20DB747B1C7df45DDe, 0x01A3c8E513B758EBB011F7AFaf6C37616c9C24d9; Arbitrum Nova: 0xca506793A420E901BbCa8066be5661E3C52c84c2, 0x292fC50e4eB66C3f6514b9E402dBc25961824D62",
+    "editorAddress": "0xf7e96217347667064DEE8f20DB747B1C7df45DDe, 0x01A3c8E513B758EBB011F7AFaf6C37616c9C24d9; Arbitrum Nova: 0xca506793A420E901BbCa8066be5661E3C52c84c2, 0x292fC50e4eB66C3f6514b9E402dBc25961824D62",
     "disbursementContractAddress": "0x6e3c4d4ce3d10b1736586BB9da145Cb0a1DC351D",
     "fundingAddress": "Arbitrum One: 0xf7e96217347667064DEE8f20DB747B1C7df45DDe, 0x01A3c8E513B758EBB011F7AFaf6C37616c9C24d9; Arbitrum Nova: 0xca506793A420E901BbCa8066be5661E3C52c84c2, 0x292fC50e4eB66C3f6514b9E402dBc25961824D62",
     "metricsDashboardLink": "",
@@ -825,6 +825,30 @@
     "disbursementContractAddress": "0x5245d4b5B5FA5cC8E11E30eE1f05c541b965f0c9",
     "fundingAddress": "0x5245d4b5B5FA5cC8E11E30eE1f05c541b965f0c9",
     "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "shaleen@sperax.io",
+    "granteeName": "Sperax",
+    "grantSize": 250500,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x3Df47172BFA7E4FEE6af3CFcA50924B02aBf7BCE, 0x70C19Dc21A438DB757F560Edb9DAF3142Eb410c4",
+    "disbursementContractAddress": "arb1:0x68DEB50d2dB6272fc062d7758B86e272C3d590eE",
+    "fundingAddress": "arb1:0x68DEB50d2dB6272fc062d7758B86e272C3d590eE",
+    "metricsDashboardLink": "https://dune.com/sperax_dao/ltipp-dashboard",
+    "grantSummary": "We have not start the distribution yet. As submitted in the proposal, we will distribute the funds through the new Demeter 2.0. The new contract will be deployed next week."
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "god@perpie.io",
+    "granteeName": "Perpie",
+    "grantSize": 200000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0xBB4a70a7E04F789F1Bb114dDf2AC109Cb6D4863B",
+    "disbursementContractAddress": "arb1:0xb9e19940Df2D555123253DAf49A33f4E04C31e81",
+    "fundingAddress": "arb1:0xb9e19940Df2D555123253DAf49A33f4E04C31e81",
+    "metricsDashboardLink": "https://www.openblocklabs.com/app/arbitrum-ltipp/protocols/Perpie",
     "grantSummary": ""
   }
 ]
