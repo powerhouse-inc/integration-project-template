@@ -157,7 +157,7 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
         // queue new created operations for processing
         const result = await driveServer.queueOperations(driveName, docId, document.operations.global.slice(-1 * (1 + grant.authorizedSignerAddress.length)));
         console.log('Adding grant', result.document?.state?.global?.granteeName);
-        await sleep(3000)
+        await sleep(4000)
     }
 
 }
