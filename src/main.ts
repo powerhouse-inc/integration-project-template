@@ -100,16 +100,16 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
             docId
         )) as ArbitrumLtipGranteeDocument;
 
-        let authorizedSignerAddresses = grant.authorizedSignerAddress;
-        if (Array.isArray(grant.authorizedSignerAddress)) {
-            authorizedSignerAddresses = grant.authorizedSignerAddress.join(', ');
+        let editorAddresses = grant.editorAddresses;
+        if (Array.isArray(grant.editorAddresses)) {
+            editorAddresses = grant.editorAddresses.join(', ');
         }
 
         const grantee: InitGranteeInput = {
             granteeName: grant.granteeName,
             startDate: grant.startDate,
             grantSize: grant.grantSize,
-            authorizedSignerAddress: grant.authorizedSignerAddress[0],
+            authorizedSignerAddress: grant.authorizedSignerAddress,
             disbursementContractAddress: grant.disbursementContractAddress,
             fundingAddress: grant.fundingAddress,
             fundingType: ["EOA"],
@@ -129,14 +129,14 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
         );
 
         // add editor addresses
-        for (let editorAddress of grant.authorizedSignerAddress) {
+        for (let editorAddress of grant.editorAddresses) {
             const signer: ActionSigner = {
                 app: {
                     name: 'Connect',
                     key: '',
                 },
                 user: {
-                    address: grant.authorizedSignerAddress[0],
+                    address: grant.authorizedSignerAddress,
                     networkId: "eip155",
                     chainId: 42161,
                 },
@@ -157,8 +157,13 @@ const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveNam
         // queue new created operations for processing
         const result = await driveServer.queueOperations(driveName, docId, document.operations.global.slice(-1 * (1 + grant.authorizedSignerAddress.length)));
         console.log('Adding grant', result.document?.state?.global?.granteeName);
+        await sleep(3000)
     }
 
+}
+
+function sleep(milliseconds: number) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
 async function main() {
@@ -248,12 +253,12 @@ const cleanJSON = (json: any) => {
         if (!fundingAddress) {
             return null;
         }
-
         return {
             granteeName: grant.granteeName,
             startDate: grant.startDate,
             grantSize,
-            authorizedSignerAddress: editorAddresses,
+            authorizedSignerAddress: grant.authorisedSignerAdress,
+            editorAddresses: editorAddresses,
             disbursementContractAddress: grant.disbursementContractAddress.match(/0x[a-fA-F0-9]{40}/)[0] || '',
             fundingAddress: fundingAddress[0],
             metricsDashboardLink: grant.metricsDashboardLink,
