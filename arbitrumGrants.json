@@ -1,9 +1,10 @@
 [
   {
-    "startDate": "2024-06-10T20:19:00.111Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "matt@stablelab.xyz",
     "granteeName": "stablelab",
     "grantSize": 0,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
     "disbursementContractAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
     "fundingAddress": "0xea172676E4105e92Cc52DBf45fD93b274eC96676",
@@ -11,21 +12,23 @@
     "grantSummary": "n/a"
   },
   {
-    "startDate": "2024-06-11T15:53:16.303Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "griffin.peer@gmail.com",
     "granteeName": "Reserve Protocol",
     "grantSize": 0,
-    "editorAddress": "0x5f6494BF57581cB2f3FaDbb9A2e82ee6F85DC1CD, arb1:0xeB2e6DA6953f76a4422012b382b7E3cD2B3D38aA, arb1:0x548854cc4cdf89b534ebCd6094CFBf18BB053286",
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x5f6494BF57581cB2f3FaDbb9A2e82ee6F85DC1CD, 0xeB2e6DA6953f76a4422012b382b7E3cD2B3D38aA, 0x548854cc4cdf89b534ebCd6094CFBf18BB053286",
     "disbursementContractAddress": "0x6cDc9C9D1E9017c36B51BdC3ef6CbFbF3B80545b",
     "fundingAddress": "0x6cDc9C9D1E9017c36B51BdC3ef6CbFbF3B80545b",
     "metricsDashboardLink": "https://dune.com/reserve-protocol/reserve-protocol-arbitrum-ltipp",
     "grantSummary": "Reserve Protocol received 500k ARB from the LTIPP grant, which was matched with 20M RSR from ABC Labs. The funds will be streamed to RToken DEX pools and Lending markets as incentives to grow TVL"
   },
   {
-    "startDate": "2024-06-12T17:36:48.501Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "yakcontributors@proton.me",
     "granteeName": "Yield Yak",
     "grantSize": 190000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x96eA6C538F76694ED18989A44B39af868dA2351a, 0x4daBe297e1e507d316B47fa54DBC188DEfd07dB0 ",
     "disbursementContractAddress": "0x5925C5c6843A8F67f7Ef2b55Db1f5491573C85Eb",
     "fundingAddress": "0x5925C5c6843A8F67f7Ef2b55Db1f5491573C85Eb",
@@ -33,10 +36,11 @@
     "grantSummary": "Yield Yak has received 195,000 ARB.  15,000 ARB to be awarded as gas refunds for Yak Swap users, and up to 180,000 ARB to be distributed to depositors in selected Yield Yak DeFi strategies.  ARB rewards increase as key TVL milestones are reached. "
   },
   {
-    "startDate": "2024-06-12T18:04:03.843Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "soheeb@contrax.finance",
     "granteeName": "Contrax",
     "grantSize": 39000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x240AEDcD6A9fD9f3CA1fE0ED2e122dA87f5836f1",
     "disbursementContractAddress": "arb1:0xCb410A689A03E06de0a6247b13C13D14237DecC8",
     "fundingAddress": "0xD516B69611B0DC2744f7d2A384592ABeB8C8e956",
@@ -44,10 +48,11 @@
     "grantSummary": "The grant is for two purposes: increasing APYs via auto-compounding, and also providing additional ARB for stakers who stay within the vaults for the entire grant. See details in our LTIPP proposal."
   },
   {
-    "startDate": "2024-06-12T20:59:32.611Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "brandon@layer3.xyz",
     "granteeName": "Layer3",
     "grantSize": 400000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x1Cf693eceEbEee99aD60e82973E2d4829C801335, 0x749D0937670205f4FBDd288f7BD8F1BC638755E3",
     "disbursementContractAddress": "0xB3E365212E44BbD1edDA89397f71Aa7b49c4f3aF",
     "fundingAddress": "0xB3E365212E44BbD1edDA89397f71Aa7b49c4f3aF",
@@ -55,10 +60,11 @@
     "grantSummary": "N/A"
   },
   {
-    "startDate": "2024-06-12T21:16:13.837Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "beachball@synonym.finance",
     "granteeName": "Synonym Finance",
     "grantSize": 400000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x8DC55AD7cfF84497b0D29464AeBB133b18f50531",
     "disbursementContractAddress": "arb1:0xAa999c8Eb59661e719dc317b10F5672D6D35B45A",
     "fundingAddress": "arb1:0xAa999c8Eb59661e719dc317b10F5672D6D35B45A",
@@ -66,10 +72,11 @@
     "grantSummary": "Synonym Finance received a 400K ARB grant to kickstart increased lending activity on its next-generation multi-chain lending markets. The goal of the grant was to draw in users from other chains and incentivize to make Arbitrum their home for DeFi, regardless of what other chains they may be interested in."
   },
   {
-    "startDate": "2024-06-13T00:08:54.725Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "pgovteam@gmail.com",
     "granteeName": "Uniswap",
     "grantSize": 1000000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x2F76d3543318B64c8970FbA32774b0276351563B, 0x9a3DCc66C87d1E77cf2c94819F4E29eec3156084, 0x08E63C88735f1fb63f303F603D981fA3f45cF711, 0x1ACD55Fe8F04cC2468AB7d2C6a9e6077C292757F, 0x3d0e30031b547737fFCf13c127350159A6C4ce17",
     "disbursementContractAddress": "0x1026D3D219098D7b1B0A180F7E557DEeA7DA82C1",
     "fundingAddress": "0x1026D3D219098D7b1B0A180F7E557DEeA7DA82C1",
@@ -77,10 +84,11 @@
     "grantSummary": "Providing liquidity incentives to Uniswap's Arbitrum Deployment."
   },
   {
-    "startDate": "2024-06-13T03:21:59.878Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "info@vaultka.com",
     "granteeName": "Vaultka",
-    "grantSize": "1000000 ARB",
+    "grantSize": 1000000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x586E843323D14fF4D743d1deBdA9c1a0661D264B",
     "disbursementContractAddress": "0x6CF1974e1f2C36bdE9F63071b0D5503194F0Da37",
     "fundingAddress": "0xc91AdFeE7Da16f9F6e0017229DdA725EC585bC85",
@@ -88,10 +96,11 @@
     "grantSummary": "Vaultka's LTIPP distributes ARB rewards to both vaults and lending pool depositors.\n\nFor vault users, a portion of the ARB allocation will be provided as one-time incentives. New users can earn these incentives by depositing into our vaults above the minimum threshold. The incentives will be distributed bi-weekly and can be claimed on our airdrop page.\n\nIn addition to attracting new users, a portion of ARB has been reserved to provide one-time incentives to attract new and existing lenders and to encourage depositors to make new deposits in our lending pools. This will open up more leverage opportunities for our vault users.\n\nFurthermore, a portion of the ARB will be allocated as rewards to our existing vaults to maintain our users and allow them to earn a share of the yield. Each vault has a base allocation, and the allocation will change according to market demand.\n\nFinally, ARB rewards have been allocated to USDC lending directly, anticipating the change in USDC usage and the potential increase in demand for the USDC pool. Users can earn ARB rewards by depositing into the USDC pool directly and claim ARB rewards bi-weekly.\n\nThe ARB reward distribution will be subject to adjustment bi-weekly to adapt the market conditions"
   },
   {
-    "startDate": "2024-06-13T09:23:59.668Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "jack@beefy.com",
     "granteeName": "Beefy",
-    "grantSize": "600,000 ARB",
+    "grantSize": 600000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xa2894cec4A49014b00E84e71861344fc794b8C27",
     "disbursementContractAddress": "0xD80e5884C1E2771D4d2A6b3b7C240f10EfA0c766",
     "fundingAddress": "0xD80e5884C1E2771D4d2A6b3b7C240f10EfA0c766",
@@ -99,10 +108,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-13T14:30:28.182Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "max@skillcap.studio",
     "granteeName": "The Beacon",
     "grantSize": 200000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xfa2EBd5aE6fdA003376555165ffF683e87D1CcB1",
     "disbursementContractAddress": "0xfa2EBd5aE6fdA003376555165ffF683e87D1CcB1",
     "fundingAddress": "0x990eB28e378659b93A29D46fF41F08DC6316DD98",
@@ -110,10 +120,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-13T15:50:03.035Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "dada@safepal.com",
     "granteeName": "SafePal",
     "grantSize": 140000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x271b1D97fB7711fe55419666C304F625e18D74b8, ",
     "disbursementContractAddress": "0x14F28D0F1408dE84F8A196aE47086C6002f317DF",
     "fundingAddress": "0x14F28D0F1408dE84F8A196aE47086C6002f317DF",
@@ -121,10 +132,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-13T16:38:19.099Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "grants@gyroscope.foundation",
     "granteeName": "Gyroscope",
     "grantSize": 100000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x5dF7c2686eDe1289315Fecc4C78134a126A0Cf17,0xF248B7A73a58467E7aca7208ff9F5d28618D6A58",
     "disbursementContractAddress": "0x823F70044351b213083F0ABc2169F95E2731064E",
     "fundingAddress": "0x823F70044351b213083F0ABc2169F95E2731064E",
@@ -132,10 +144,11 @@
     "grantSummary": "n/a"
   },
   {
-    "startDate": "2024-06-13T16:53:06.045Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "hwxfrank@d2.finance",
     "granteeName": "D2 Finance ",
     "grantSize": 100000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x0F6f0D71A7EAf55e1CAfe71d85aa53ff8aCf4BA4",
     "disbursementContractAddress": "0x6f1e46C80b8e1C528B05801a5668C01D9f99d258",
     "fundingAddress": "MS:0xe7eb925300075E49fc5CAaD5d408A50Dd22f92D6, ARB++: 0x291344FBaaC4fE14632061E4c336Fe3B94c52320",
@@ -143,10 +156,11 @@
     "grantSummary": "https://forum.arbitrum.foundation/t/d2-finance-ltipp-application-draft-final/21826/28"
   },
   {
-    "startDate": "2024-06-13T17:53:47.336Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "dalcarraz@gammaswap.com",
     "granteeName": "GammaSwap",
     "grantSize": 300000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x93f70b826223caC336CE71b7e465d149D3CB9f7C, 0xE342396Ecfd2525429C6D79AA2b1EdE122458F38, 0x9a6385e7fdB70AA3d47228E151F2E8f5D6BF3F5d",
     "disbursementContractAddress": "0x34B5870C0431158e11c68B770127FBd2cE953f7a",
     "fundingAddress": "0x34B5870C0431158e11c68B770127FBd2cE953f7a",
@@ -154,10 +168,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-13T18:13:48.589Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "mcnut@lido.fi",
     "granteeName": "Lido",
     "grantSize": 750000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xc7a8de05264442a318189f2bd160d2830902c8cd",
     "disbursementContractAddress": "arb1:0x8C2b8595eA1b627427EFE4f29A64b145DF439d16",
     "fundingAddress": "arb1:0x8C2b8595eA1b627427EFE4f29A64b145DF439d16",
@@ -165,10 +180,11 @@
     "grantSummary": "The grant will largely be focused on expanding liquidity of LRTs and stETH across Arbitrum. "
   },
   {
-    "startDate": "2024-06-13T19:24:12.905Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "ov3rkoalafied@gmail.com",
     "granteeName": "Alchemix",
-    "grantSize": "150000 ARB",
+    "grantSize": 150000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x5CA51c0Bb6Dbdf29465dAeb3F5dBD37074133467, 0x99932aEc590C504093EEcBaFaBcCC9A5EC1551D1,0xef037A1D8219139c915638E40b478e0CAF22f9fF",
     "disbursementContractAddress": "0x9900B42401FD3698a5F6D78b8875813685237875",
     "fundingAddress": "0x9900B42401FD3698a5F6D78b8875813685237875",
@@ -176,10 +192,11 @@
     "grantSummary": "Distribute 33% of ARB to Alchemix vaults on Arbitrum, 66% to alAsset liquidity pools."
   },
   {
-    "startDate": "2024-06-13T22:56:29.999Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "t@tazz.finance",
     "granteeName": "Covenant",
     "grantSize": 75000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x6BDa3e7D728ca868e0a95bE5Ec75D588113473F5, 0x236EF7f3aAE450c4d686100A9C93b96aA86F7f8c",
     "disbursementContractAddress": "0x5de2fdf135a4F50f38A54f594c39632f40E38951",
     "fundingAddress": "0x5de2fdf135a4F50f38A54f594c39632f40E38951",
@@ -187,10 +204,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T04:56:45.233Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "snowboy9682@gmail.com",
-    "granteeName": "CIAN_protocol",
-    "grantSize": "250000ARB",
+    "granteeName": "CIAN Protocol",
+    "grantSize": 250000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x31ccd63C654C61446288546Da9eaD31b17b99dB0",
     "disbursementContractAddress": "0x2970A6AECADFb0e8F396DaD8c48E566AdE010e5B",
     "fundingAddress": "0x3e8f96165344F1324dB58E159f353504014e183d",
@@ -198,10 +216,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T07:06:47.673Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "jordan@stakewise.io",
     "granteeName": "StakeWise",
     "grantSize": 500000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xf052e0df010819602F0B22a7cB600E33FFc91358, 0xB0F43AB7a9c1bB461be8242d2C7DE0A21dAF8377, 0x61B01a33Aea3e827B3941Ab097778bd3FA48a332",
     "disbursementContractAddress": "0x2685C0e39EEAAd383fB71ec3F493991d532A87ae",
     "fundingAddress": "0x2685C0e39EEAAd383fB71ec3F493991d532A87ae",
@@ -209,10 +228,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T07:27:20.506Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "maroon@pancakeswap.com",
     "granteeName": "PancakeSwap",
     "grantSize": 450000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x14bCf240924F9D99AF6D8Fe397f71ea36FD90625, 0xfaa196e34C26afC474574a395598b9bab3e152b1",
     "disbursementContractAddress": "0x5562335F7B2b6A740d49a3EEdE55216E61A1de7B",
     "fundingAddress": "0x5562335F7B2b6A740d49a3EEdE55216E61A1de7B",
@@ -220,10 +240,11 @@
     "grantSummary": "We have received 450,000 ARB as incentives, to be distributed in the following ways:\n\n🌊 330,000 ARB to v3 liquidity mining\n📈 60,000 ARB to Stryke options liquidity mining\n🔮 60,000 ARB to Prediction"
   },
   {
-    "startDate": "2024-06-14T07:27:30.966Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "alessandro@brahma.fi",
     "granteeName": "Brahma",
     "grantSize": 150000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xA701a40aD20ac6cD22aCd24F27b8319C2dB0Bef9 , 0xC942A8e70de80e925B3ed96D4086decb500ed95D",
     "disbursementContractAddress": "0xd94907d25f35b1f0ff18E1dA4B5c2fcD358214aF",
     "fundingAddress": "0xd94907d25f35b1f0ff18E1dA4B5c2fcD358214aF",
@@ -231,10 +252,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T08:20:40.659Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "gal@debridge.finance",
     "granteeName": "deBridge",
     "grantSize": 1000000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xF67fCCd506C0A8e6F8B5d7cB6B02E3140fCc9031, 0x13Bac1979571Cc264EA3223177F98D22d260bEC3, 0xa256689Efc10ff0758f56E1590A3a543CAaaCc31  ",
     "disbursementContractAddress": "0xF67fCCd506C0A8e6F8B5d7cB6B02E3140fCc9031",
     "fundingAddress": "0x6c1b3813BDFc0916b833E611fC3cDa03C1F75107",
@@ -242,10 +264,11 @@
     "grantSummary": "The goal of the grant is to facilitate onboarding of users and transfers of liquidity between Arbitrum and various blockchain ecosystems connected to deBridge, allocating fee rebates and gas costs to participants."
   },
   {
-    "startDate": "2024-06-14T09:07:40.422Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "hello@bebop.xyz",
     "granteeName": "Bebop",
-    "grantSize": "400,000 ARB",
+    "grantSize": 400000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xcaBD7845e4E51069E87a62d0A29064782134124C, 0x5Bad996643a924De21b6b2875c85C33F3c5bBcB6, 0x2e7a5982c2D017BF4adba51C2Fa873DB079FB151, 0x27952Cd817A3d21932C5D6fF9a67347184866541, 0xC5531177169b4576553Df6d4B4e176d0d7C3C826",
     "disbursementContractAddress": "0xD59743314ba847c21E50cA90Bd56EB6d9F518992",
     "fundingAddress": "0xD59743314ba847c21E50cA90Bd56EB6d9F518992",
@@ -253,10 +276,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T10:03:42.370Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "wing@tradao.xyz",
     "granteeName": "Tradao",
-    "grantSize": "100k",
+    "grantSize": 100000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x87d8043004b95753bd2a73e446ba8f2d8b0c77e1",
     "disbursementContractAddress": "0x6bfcB7DA12DE2Bfb874A4B1f12Ceb4EDF38470b2",
     "fundingAddress": "arb1:0xf831F2EcC34eBE96347268aE444dCE9d961842C7",
@@ -264,10 +288,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T10:24:57.828Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "max@connext.network",
     "granteeName": "Connext",
     "grantSize": 446472,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xd333Bc5c9670C9cEb18f9A2CF02C6E86807a8227",
     "disbursementContractAddress": "0xC7BeebB0C52121e17b3bfdf60f47e4e0715a0AA2",
     "fundingAddress": "0xC7BeebB0C52121e17b3bfdf60f47e4e0715a0AA2",
@@ -275,10 +300,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T10:47:56.587Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "anshu@flint-labs.com",
     "granteeName": "LogX",
     "grantSize": 395000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x037e3c37cdD078b9eA2C1D28a0A440CE0e159C4a, 0xf399dEe036dbBDEF37264df105B9b84F92a11fbc",
     "disbursementContractAddress": "0xA57146ff13671f730D0D122ed192550A3B235fD7",
     "fundingAddress": "0x8195d31CaA07E6C31C1b84C5997bBE958F2B01aF",
@@ -286,10 +312,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T12:27:13.470Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "xg17sp@gmail.com",
     "granteeName": "Aave DAO",
     "grantSize": 750000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xe2D6AA050C655a3F0f95eFD8F2107778090308aE,0xF1dF824419879Bb8a7E758173523F88EfB7Af193",
     "disbursementContractAddress": "0xcaf8155D99a0d11567f039422BB8A0BA003788E5",
     "fundingAddress": "0xcaf8155D99a0d11567f039422BB8A0BA003788E5",
@@ -297,10 +324,11 @@
     "grantSummary": "Not yet, we just claimed the first tranch today. As soon as there's a summary available we will share it with you."
   },
   {
-    "startDate": "2024-06-14T12:45:12.816Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "jpickett713@gmail.com",
     "granteeName": "Myso Finance",
-    "grantSize": "100,000 ARB",
+    "grantSize": 100000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x96ACD1963B5D65a87E4402909e585AF06c93d3C9,0x2b13a4AcFF9934f1c60582Dcd5a7db947E74AdEb,0x6E47a3BdEeFDC5b8f748f00387c658612a1e48EE,0x5546D150e88A7ED0f829Ff7dF3d128925b2DFf29,0xfd78c4a60B993B03c9038d8D8784fA13A56ad67e,0x2c0B08C414A8EE088596832cf64eFcA283D46703,0x87cc1D672356fF6A5c320dfeBCf36bFe7e0B4F5E",
     "disbursementContractAddress": "0xD6f15a797C78f598bcb840464151aC526dDD4A0f",
     "fundingAddress": "0xD6f15a797C78f598bcb840464151aC526dDD4A0f",
@@ -308,10 +336,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T14:01:54.885Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "syou@equilibria.fi",
     "granteeName": "Equilibria Finance",
-    "grantSize": "400,000 ARB(325,000 in form of oARB and 75,000 ARB)",
+    "grantSize": 400000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xE61D44ED52eCe81f9EC55657c8de6E0C7A94C5Fe,0x3abe73A993FF8ea1F41E9482020612e061C1C731",
     "disbursementContractAddress": "0x6Bc27bE639DF9eAe4D3EFFB0159f03C54255eb89",
     "fundingAddress": "0x501CfF5dF8A307ACa27C916d6E1720D41fDF64a5,0x198Ddb596a080215F0e15caeABca7eAB6b2d7A8f,0x96DB998c5C6C82f6aB3999661A425454eF002202,0x6fDF80071499b46Bb53AfBA7bAFf9D91A21133AB,0xcB7212d19D52b53e44625Dc1A9d4B1f1d4833575,0x20Dc8e720Fd78a790C9b644C1fb2f900fC5921Fe,0x4c960b0dC60873d7f01bC393FF2d5443285362eF,0x7e2C4005A752c2eB4772d06C7adb4aCe75f20c6B",
@@ -319,10 +348,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T14:35:48.854Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "shardul@alphagrowth.io",
     "granteeName": "Compound Finance",
     "grantSize": 1800000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xbCeAD0fDeE4C73e004FC509862fD5740D26D652d , 0x2501713A67a3dEdde090E42759088A7eF37D4EAb",
     "disbursementContractAddress": "arb1:0x05B51C484146170240497CE3Ce18aCc6AF2ABC28",
     "fundingAddress": "arb1:0x05B51C484146170240497CE3Ce18aCc6AF2ABC28",
@@ -330,10 +360,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T15:05:23.951Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "0xwhoisndu@rage.trade",
     "granteeName": "Rage Trade ",
     "grantSize": 425000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x6DFF62Ed280E1cCB169665B20C7268B8Bd944dA5",
     "disbursementContractAddress": "0xee2A909e3382cdF45a0d391202Aff3fb11956Ad1",
     "fundingAddress": "0xee2A909e3382cdF45a0d391202Aff3fb11956Ad1",
@@ -341,10 +372,11 @@
     "grantSummary": "Rage Trade submitted a proposal to run weekly and daily ROI based trading competitions in the LTIPP initial review round. \nThe proposal aimed to allocate 100% of the LTIPP grant to onboard and reward users via these competitions."
   },
   {
-    "startDate": "2024-06-14T15:31:49.083Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "erasme@perpy.finance",
     "granteeName": "perpy",
     "grantSize": 96000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x29C4165B6d280416c4A08Ff5A5787C5a469a2f36, 0x7cfED332B6514514A77fd8978eC28B7Fb62C8326",
     "disbursementContractAddress": "0x98237513fcB956f63D52074D507970E8Fc4D5e82",
     "fundingAddress": "0x98237513fcB956f63D52074D507970E8Fc4D5e82",
@@ -352,10 +384,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T15:32:16.156Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "amplice@protonmail.com",
     "granteeName": "Gearbox Protocol",
     "grantSize": 650000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x84641137BaC4Db68DE94Ec3D2ED89acE0AA88f20, 0xd2d8e34fa5bafa8e7903babef5fd9101df45ce04",
     "disbursementContractAddress": "0x2C417a8DecAd996c786c7446c9552CfdE9832132",
     "fundingAddress": "0x2C417a8DecAd996c786c7446c9552CfdE9832132, 0x2c31eFFE426765E68A43163A96DD13DF70B53C14",
@@ -363,10 +396,11 @@
     "grantSummary": "https://forum.arbitrum.foundation/t/gearbox-ltipp-application-final/21672"
   },
   {
-    "startDate": "2024-06-14T16:17:07.878Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "andrew@nextgenbt.com",
     "granteeName": "SX Network",
     "grantSize": 498000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xA78f0A8144E3cFAB4C203f65778f654ef12279Cb",
     "disbursementContractAddress": "0x1d730f26293fc2f3495a8acb199b8726c24a6cde",
     "fundingAddress": "0x1d730f26293fc2f3495a8acb199b8726c24a6cde",
@@ -374,10 +408,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T21:41:41.974Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "jason@mountainprotocol.com",
     "granteeName": "Mountain Protocol",
     "grantSize": 295000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x8c60248A6CA9b6c5620279D40C12eB81e03cD667",
     "disbursementContractAddress": "0xDE75370c4DDFE7CBE53BFcf9d94182225923A053",
     "fundingAddress": "0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C,0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812",
@@ -385,10 +420,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-14T23:22:09.881Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "dakotah@orangecatsolutions.org",
     "granteeName": "Bunni",
     "grantSize": 30000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xe7Edf25702f5EE446f55Fe21c579F9018f3d5Bc4",
     "disbursementContractAddress": "0x5Ed29d75277085BceB11950B213dB1D5e766872C",
     "fundingAddress": "0x5Ed29d75277085BceB11950B213dB1D5e766872C",
@@ -396,10 +432,11 @@
     "grantSummary": "Our grant is for bribe matching and volume incentives."
   },
   {
-    "startDate": "2024-06-15T01:10:16.722Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "peter@originprotocol.com",
     "granteeName": "Origin Protocol",
-    "grantSize": "185000 ARB",
+    "grantSize": 185000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xcc4fd6e348009710404641a01b29f15703b90aed, 0x1C08C609E5231618BA2FFCF84B5036ba33A919D9",
     "disbursementContractAddress": "0xfD1383fb4eE74ED9D83F2cbC67507bA6Eac2896a",
     "fundingAddress": "0xfD1383fb4eE74ED9D83F2cbC67507bA6Eac2896a",
@@ -407,10 +444,11 @@
     "grantSummary": "https://snapshot.org/#/arbitrumfoundation.eth/proposal/0x138d4e2110a7dbe61a293361ee57a1ea0893af4664a940a6e91db43a8b6286a5"
   },
   {
-    "startDate": "2024-06-15T11:26:23.050Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "feynman@buffer.finance",
     "granteeName": "Buffer Finance",
     "grantSize": 59584,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x2A70D4EFe227aD30c275FAfa800e12102571289B, 0xa9A5A2b35b71d4db2F824A45A878a9Da7E436cCC",
     "disbursementContractAddress": "arb1:0x5558CD6480A63601EC780D8f40FD7cD97dea48a7",
     "fundingAddress": "0xEa0b956A04b265A7E2A6d00A4bD65a48C430cE16, 0x9e53fF83b10B7531f0EeD7010b1bF847DaB88267, 0xa4fdE8a5e22671Fa43389C6d8d1B698Dcbcc6728",
@@ -418,10 +456,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-16T15:18:51.425Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "adam@knightsoftheether.com",
     "granteeName": "Knights of the Ether",
     "grantSize": 240000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xF6F4fF252b28162De985f6B81199Cd33212A43a1 , 0xFDe5DEe1158f2E51dDE568B5C7035bFf9A54DF42",
     "disbursementContractAddress": "arb1:0x3Cba613CE27ef3c52fF4c3d641fe248FCDDD0c06",
     "fundingAddress": "arb1:0x3Cba613CE27ef3c52fF4c3d641fe248FCDDD0c06",
@@ -429,10 +468,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-16T20:50:46.157Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "marketing@gravitaprotocol.com",
     "granteeName": "Gravita Protocol",
     "grantSize": 320000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x1d1CfD4FfB8cFD0A903A38c3B41D593369B46103",
     "disbursementContractAddress": "0xfB0214D7Ac08ed0D2D9cA920EA6D4f4be2654EA5",
     "fundingAddress": "0xfB0214D7Ac08ed0D2D9cA920EA6D4f4be2654EA5",
@@ -440,21 +480,23 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-17T04:08:46.349Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "bobrossieth@gmail.com",
     "granteeName": "HOP Protocol",
     "grantSize": 500000,
-    "editorAddress": "bobrossi.eth ",
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0xb29A655f3D67B2B6724Fb22B2C2303cB660c946B ",
     "disbursementContractAddress": "0x2Fd178551A5ac8F0F51faC57ffC48EA7d9A87fAe",
     "fundingAddress": "0xCd1d7AEfA8055e020db0d0e98bbF3FeD1A16aad6",
     "metricsDashboardLink": "https://www.openblocklabs.com/app/arbitrum-ltipp/protocols/HOP-Protocol, https://dune.com/hop/hop-arbitrum?start_date_d05e28=2023-03-01+00%3A00%3A00&start_date_d3fb3e=2023-03-01+00%3A00%3A00&start_date_dfd222=2023-03-01+00%3A00%3A00&end_date_d7d656=2024-03-01+00%3A00%3A00&end_date_d75166=2024-03-01+00%3A00%3A00&end_date_d74f12=, https://dune.com/hopteam/hop-protocol-ltipp-arbitrum",
     "grantSummary": "ARB tokens will be allocated to increase our liquidity mining incentives in order to attract liquidity providers to the platform. ARB tokens will be allocated to subsidize gas fees by 80% for users who are onboarding to the Arbitrum chains (from any other network). Users exiting Arbitrum One or Nova will not get subsidized. ARB tokens will be allocated to subsidize bonder fees in order to reduce end-user costs to bridge."
   },
   {
-    "startDate": "2024-06-17T04:15:29.365Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "julie@dappos.network",
     "granteeName": "dappOS",
     "grantSize": 81865,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x2eF022bA32b4037CaD104Ba71f60a699CcCe8265",
     "disbursementContractAddress": " 0x7c4b3cd3a10a48745f4193c79baecb920ff1d23f",
     "fundingAddress": " 0x7c4b3cd3a10a48745f4193c79baecb920ff1d23f",
@@ -462,10 +504,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-17T04:59:40.620Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "gandalf@rockx.com",
     "granteeName": "Bedrock",
     "grantSize": 262000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xBCC66eBD45C5E58F1932e76AE57f058851711C23, 0x0a41D9043D71403A97582E1cABb43615bAFE4A27, 0x09610d4239c8f3413509202DCcC7e27C6B0a47A3 ",
     "disbursementContractAddress": "arb1:0x14B7bC2404E9a91eEaCafE477BbF0542e015a789",
     "fundingAddress": "arb1:0x14B7bC2404E9a91eEaCafE477BbF0542e015a789",
@@ -473,10 +516,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-17T05:18:07.752Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "jeff@steadefi.com",
     "granteeName": "Steadefi",
     "grantSize": 150000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xe6fEED5AE6f960BEfCF0A68313Ef19e782A039c0,0x20416B99D8Ab7711bAFD89DFcCFf23be1778C01c",
     "disbursementContractAddress": "0x1F083a6C74D88c451B84147Bf0177a76a4c2a516",
     "fundingAddress": "0xBc22B72B0408F66316CC4ee562b858f612776F14",
@@ -484,10 +528,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-17T05:37:46.918Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "catherine@aark.digital",
-    "granteeName": "aark",
+    "granteeName": "Aark",
     "grantSize": 900000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x190F4d0a897178B101Ca881a4a80728B34531803,  0x88C448765956BDCfd48eFdedA53bCB34D7c3027A,  0x4bfE5A1E0bF513AD7cAcBa2F55511F0b7fB29F77",
     "disbursementContractAddress": "0xe9B14203B4C914aFcbD1bCaB9827b2B89e4D86CB",
     "fundingAddress": "0xece69B4a3E77952e615426b95E42b68E6e4a56aE",
@@ -495,10 +540,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-17T05:58:55.276Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "bobbi@copra.finance",
     "granteeName": "Copra",
     "grantSize": 30000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x28d112b3629ec059996302e3972c620cf8996c48, 0xE08304F3a5889b02B6cc1F666160223f83979D88",
     "disbursementContractAddress": "0xf580CD32f85B230e19C83eec74cc3E0B28873E5f",
     "fundingAddress": "N/A for now, will be updated",
@@ -506,10 +552,11 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-17T08:43:12.274Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "Gavin@deltaprime.io",
     "granteeName": "DeltaPrime",
     "grantSize": 750000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xAEe7343bb5972197367F4e979A0190ee9ad649D5",
     "disbursementContractAddress": "0xbb65FA45082035341b5748494B47dB2ac027a50d",
     "fundingAddress": "0xbb65FA45082035341b5748494B47dB2ac027a50d",
@@ -517,21 +564,23 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-17T11:15:16.662Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "slevin@ipor.io",
     "granteeName": "IPOR",
     "grantSize": 112500,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xd01911A1a0EFDdE736aF90B199Def918749c8A92,0xe0437191B5c2507A2a2c18b86F4a17f5e2bb4d29,0xcd6f959660eEF9873c14f84d4b6893beB0Ab8Ef5",
-    "disbursementContractAddress": "arb1:0xff560c41eacd072AD025F43DF3516cB6580C96bF",
+    "disbursementContractAddress": "0xff560c41eacd072AD025F43DF3516cB6580C96bF",
     "fundingAddress": "arb1:0xff560c41eacd072AD025F43DF3516cB6580C96bF",
     "metricsDashboardLink": "https://dune.com/ipor/ipor-ltipp-dashboard",
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-17T11:42:38.948Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "yoni@cvi.finance",
     "granteeName": "CVI.finance",
     "grantSize": 125000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0x002e141558A0e6577E8F47253c009b134c32A1ba,0x6BF3609191EA9204db17Dc1F0c644146B1640608",
     "disbursementContractAddress": "0x7F4b135782C4A3B1c78c93f23f2016Cb5CD96cC8",
     "fundingAddress": "0x7F4b135782C4A3B1c78c93f23f2016Cb5CD96cC8",
@@ -539,14 +588,243 @@
     "grantSummary": ""
   },
   {
-    "startDate": "2024-06-17T12:34:42.767Z",
+    "startDate": "2024-06-03T07:00:00.000Z",
     "email": "mitch@contango.xyz",
     "granteeName": "Contango",
     "grantSize": 220000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
     "editorAddress": "0xdE93954Cc528Ef541b261512284C844c8e0d3300, 0xe354127Cbc1619BFd3371a098dD2B02eB9b60193, 0xc63c28fcc3462d042a262928649416fb0b4bf743",
     "disbursementContractAddress": "0x672E032290CB20c72CBCaB9721cb530704C6cB12",
     "fundingAddress": "0x672E032290CB20c72CBCaB9721cb530704C6cB12",
     "metricsDashboardLink": "",
     "grantSummary": "The grant is geared towards incentivizing Contango's arbitrum markets. It will benefit all lending markets integrated by Contango: Aave, Compound, Silo, Dolomite, Lodestar, Radiant. More info on: https://forum.arbitrum.foundation/t/contango-xyz-ltipp-application-draft/21689"
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "aditya@kelpdao.xyz",
+    "granteeName": "KelpDAO",
+    "grantSize": 250000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x67BB8f98DDff504204B9AF8e9C00E9C6926526e2, 0x8E0a538081BA1d7f41b7c594F0a2Afe7aE558494, 0x746d6a9f789999799AE7f5d62Aa70422F86826b6",
+    "disbursementContractAddress": "0xb0d9E2290dC20113aB4F57b0D55DddDf26f804CA",
+    "fundingAddress": "0x40FD112387743A6c00D698BeD9014e53db989769",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "hello@threshold.network",
+    "granteeName": "Threshold Network",
+    "grantSize": 300000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x12107242e2FbEd0a503e102751fa6Aa8cB7446eC, 0xf791EfdF778a3Ca9cc193fFbe57Da33d1596E854, 0x8122158AaabA26eA9e6fB3eD2dfe3fb6B4D9Bd32, 0x4145Bd65b597deb442735777eB8C2d78Fd25a055",
+    "disbursementContractAddress": "0xbA287B57015B87B0E8e6Dd93ff3c92AF51ac60b7",
+    "fundingAddress": "Pending Approval of GMX tBTC/USDC pool - 0x755d6688ad74661add2fb29212ef9153d40fca46, 0x542F16DA0efB162D20bF4358EfA095B70A100f9E, 0xc9f52540976385a84bf416903e1ca3983c539e34, 0xe9e6b9aaafaf6816c3364345f6ef745ccfc8660a",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "gio@smilee.finance",
+    "granteeName": "Smilee Finance",
+    "grantSize": 140000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0xec6e20934afd4c295f96e045fA3A2D9887a5Bd84, 0x74562179b5BBb183497bC673364d93425ecc2A83, 0xAfd2B9Ba068Bb57B25d687cf5dC554Dd4277B933 ",
+    "disbursementContractAddress": "0x00f255C93906CB59CCfF6b21f7Bf9dC0Ca30e09A",
+    "fundingAddress": "0x9fC3aBbC8c945Fdde9AE9cF555DE783142dEbc90",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "beachball@synonym.finance",
+    "granteeName": "Synonym Finance",
+    "grantSize": 400000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x8DC55AD7cfF84497b0D29464AeBB133b18f50531",
+    "disbursementContractAddress": "0xAa999c8Eb59661e719dc317b10F5672D6D35B45A",
+    "fundingAddress": "arb1:0xAa999c8Eb59661e719dc317b10F5672D6D35B45A",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "vivek.partal@staderlabs.com",
+    "granteeName": "Staderlabs",
+    "grantSize": 250000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0xAD345b348BD84A4B42A5FDe63FeB7a29EF2AF4E9, 0x68258012DA3B933a81617FD08c9382a60B87cA98, 0x5082D698B9782D5f8Cb4958685f7C410A4d6fDC9",
+    "disbursementContractAddress": "0xE0b2590a09d5Da40cB6D3D8d5436B5Cafe2B4b9F",
+    "fundingAddress": "0x68258012DA3B933a81617FD08c9382a60B87cA98, 0x605555931f22dce32172eaab543edd59aede796b, 0xf83e4bd2765e1dd1fe9552331a988e0f6a3ec313",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "team@lumin.finance",
+    "granteeName": "Lumin Finance",
+    "grantSize": 50000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x23cb1EEB359451169bFd844dFc8E7CbCE12C8A6F, 0x0D88E6d34B0dF60F5c21Ee6De8002FdC0fB065f6, 0x6BfBE8672e89F659720f1c93d4C850E4eb6336CB",
+    "disbursementContractAddress": "0xa489B76786AE756691744A240c1bB1349810773C",
+    "fundingAddress": "0xa489B76786AE756691744A240c1bB1349810773C",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "ross@ryu.games",
+    "granteeName": "DoG Protocol",
+    "grantSize": 75000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x4B670B1dbd49bD980B5BdF31090CAA37E6dfc0df",
+    "disbursementContractAddress": "0x4B670B1dbd49bD980B5BdF31090CAA37E6dfc0df",
+    "fundingAddress": "arb1:0x4B670B1dbd49bD980B5BdF31090CAA37E6dfc0df",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "kamado@emergent.so",
+    "granteeName": "Integral",
+    "grantSize": 225000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x1eD159dA82FCee6B13322926EAF9C7eEFd27ce3C, 0x49E20a0A6B75D17277635DdaBe03857869bf339C",
+    "disbursementContractAddress": "0xaE38cF8157b7A7CFb6Cf47CFc82bE0A19F9145dB",
+    "fundingAddress": "0xDB8c9BcC43c71e07415BC90904e2BE289b65d46c",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "kirk@revest.finance",
+    "granteeName": "Revest Labs",
+    "grantSize": 75000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0xc458F0d0C47cf797FA0F195d7ABb6b1Ff39Fafb0, 0x96AA7E4BA857087cf3b529012eDfe5a96F0412D6",
+    "disbursementContractAddress": "0x397002E9E957990fe39E84FD55095f998a953e81",
+    "fundingAddress": "0x397002E9E957990fe39E84FD55095f998a953e81",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "eric.charles91@gmail.com",
+    "granteeName": "STFX",
+    "grantSize": 300000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0xc05936e6B40e47656F3a300A2650e931cbd116F2, 0x819e1603035a40c261e35f906abefc27520cf9b1",
+    "disbursementContractAddress": "0x145F43a2bFB5915Dc39b83a499A8db19686cD46c",
+    "fundingAddress": "0x145F43a2bFB5915Dc39b83a499A8db19686cD46c",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "marc@pyth.network",
+    "granteeName": "Pyth Network",
+    "grantSize": 1000000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0xf0eA7a972B873faF831530E5E8b0C3FDA2D048B5",
+    "disbursementContractAddress": "0x4133F561B747F6cd2ECd4f03515A632F5e4D8C8D",
+    "fundingAddress": "0xff1a0f4744e8582DF1aE09D5611b887B6a12925C",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "alex@primex.finance",
+    "granteeName": "Primex Finance",
+    "grantSize": 42000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0xe1f8351Cf7668C2338B981108e38d7BeAAD38b7C,0x9408443d0dF9cE2319dcbcfd380e978023558E9D,0xF563911a1f3B318a3aaD7DFA92904Cbb8E1979fA,0xFc8142D8B0B894BAc004aaBb9C22626c4C15f0ea,0x2b53236c370BF019709fC18939d9bC4Ab8E3e636 ",
+    "disbursementContractAddress": "0x5a3Eda2dC31eEEB937a402C55A84c69Ecb90bb5a",
+    "fundingAddress": "0x5a3Eda2dC31eEEB937a402C55A84c69Ecb90bb5a",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "jordan@indexcoop.com",
+    "granteeName": "Index Coop",
+    "grantSize": 165500,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x3536bED4d374e18C19Cf28E6d0326f640B6C2Bfd",
+    "disbursementContractAddress": "0xBd6b8EEc7b940DBE196Fe3Bac7B51E63435c8Ae9",
+    "fundingAddress": "0xBd6b8EEc7b940DBE196Fe3Bac7B51E63435c8Ae9",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "egor.k@symbiosis.finance",
+    "granteeName": "Symbiosis ",
+    "grantSize": 50000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "Arbitrum One: 0xf7e96217347667064DEE8f20DB747B1C7df45DDe, 0x01A3c8E513B758EBB011F7AFaf6C37616c9C24d9; Arbitrum Nova: 0xca506793A420E901BbCa8066be5661E3C52c84c2, 0x292fC50e4eB66C3f6514b9E402dBc25961824D62",
+    "disbursementContractAddress": "0x6e3c4d4ce3d10b1736586BB9da145Cb0a1DC351D",
+    "fundingAddress": "Arbitrum One: 0xf7e96217347667064DEE8f20DB747B1C7df45DDe, 0x01A3c8E513B758EBB011F7AFaf6C37616c9C24d9; Arbitrum Nova: 0xca506793A420E901BbCa8066be5661E3C52c84c2, 0x292fC50e4eB66C3f6514b9E402dBc25961824D62",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "tex@bondprotocol.finance",
+    "granteeName": "Bond Protocol",
+    "grantSize": 120000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x90F2545E84e50BebF274A3C6509A5a34ef5839Bd, 0xaA400c5376Fe2067Ca6972D2ffc871FEa30d52d7",
+    "disbursementContractAddress": "0x007F3eD580c754A9495881b066e9FC98e406c214",
+    "fundingAddress": "0x007F3eD580c754A9495881b066e9FC98e406c214",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "katherine.l@apollox.com",
+    "granteeName": "APX Finance",
+    "grantSize": 525000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x456e5249d6ddEF4fd3cADabe09dB076b6dd20dac",
+    "disbursementContractAddress": "0x60EdE4402a34762D608AD9bA7bD3797f5bFE544c",
+    "fundingAddress": "0x60EdE4402a34762D608AD9bA7bD3797f5bFE544c, 0xCe10072E051DA9B8e297AC439B3d7c5C45A32c8f",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "orangerangefinance@gmail.com",
+    "granteeName": "Orange Finance",
+    "grantSize": 150000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0xF7764A9B664a3905192d95Aa43201033258871C6",
+    "disbursementContractAddress": "0xd076397eC36F1C92939bd8cdA9F9F7734F308C4b",
+    "fundingAddress": "0xd076397eC36F1C92939bd8cdA9F9F7734F308C4b",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "sam@steer.finance",
+    "granteeName": "Steer Protocol",
+    "grantSize": 250000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x90bfc6581319565BD4bc5a6c9fAbE0479c876460, 0x307ba5c26AF98658000deBb07fa4DF2564bDb1d9, 0xFD2786A8928A155d8f9f2f0E0bfdA016827b78D5",
+    "disbursementContractAddress": "0x3E15E78109525444F7c521bA34c623A96cA38653",
+    "fundingAddress": "0x3Ef3D8bA38EBe18DB133cEc108f4D14CE00Dd9Ae",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
+  },
+  {
+    "startDate": "2024-06-03T07:00:00.000Z",
+    "email": "harry@fiat24.com",
+    "granteeName": "Fiat24",
+    "grantSize": 490000,
+    "authorisedSignerAdress": "0xeDA03FbC91bf77339b9387a8Aebe55524bB96Add",
+    "editorAddress": "0x5245d4b5B5FA5cC8E11E30eE1f05c541b965f0c9",
+    "disbursementContractAddress": "0x5245d4b5B5FA5cC8E11E30eE1f05c541b965f0c9",
+    "fundingAddress": "0x5245d4b5B5FA5cC8E11E30eE1f05c541b965f0c9",
+    "metricsDashboardLink": "",
+    "grantSummary": ""
   }
 ]
