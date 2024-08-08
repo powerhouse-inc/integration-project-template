@@ -1,147 +1,215 @@
-import { DocumentDriveServer } from "document-drive";
+import Path from "path";
+import fs from "fs/promises";
 import {
-    module as DocumentModelLib,
-} from 'document-model/document-model';
+    generateUUID,
+    OperationUpdate,
+    PullResponderTransmitter,
+    SwitchboardPushTransmitter,
+} from "document-drive";
+import { requestPublicDrive } from "document-drive/utils/graphql";
+import { module as DocumentModelLib } from "document-model/document-model";
 import {
-    utils as DocumentDriveUtils,
-    reducer,
-    actions,
-    DocumentDriveDocument
-} from 'document-model-libs/document-drive';
-import * as DocumentModelsLibs from 'document-model-libs/document-models';
-import { ArbLtipGranteeDocument, actions as arbActions, reducer as arbReducer } from 'document-model-libs/arb-ltip-grantee';
-import { DocumentModel } from "document-model/document";
+    utils as DriveUtils,
+    DocumentDriveState,
+    DocumentDriveAction,
+} from "document-model-libs/document-drive";
+import * as DocumentModelsLibs from "document-model-libs/document-models";
+import { utils, Document } from "document-model/document";
 import dotenv from "dotenv";
+
 dotenv.config();
 
+const documentModels = [
+    DocumentModelLib,
+    ...Object.values(DocumentModelsLibs),
+] as const;
 
-const addFoldersAndDocuments = async (driveServer: DocumentDriveServer, driveName: string) => {
-    let docId = "2000"
-    let drive = await driveServer.getDrive(driveName);
-    let document: ArbLtipGranteeDocument;
-    try {
-        document = (await driveServer.getDocument(driveName, docId)) as ArbLtipGranteeDocument
-    } catch (e) {
-        // add folder
-        drive = reducer(
-            drive,
-            actions.addFolder({
-                id: '2',
-                name: "Folder"
-            })
-        )
+async function loadZip(path: string) {
+    const file = await fs.readFile(path);
 
-        // create new document in folder with generated sync unit
-        drive = reducer(
-            drive,
-            DocumentDriveUtils.generateAddNodeAction(
-                drive.state.global,
-                {
-                    id: docId,
-                    name: 'document 1',
-                    documentType: 'ArbLtipGrantee',
-                },
-                ['global', 'local']
-            )
-        );
+    // first loads the zip with the base loader
+    // as the document type is not known yet
+    const baseDocument = utils.loadFromInput(file, (state: Document) => state, {
+        checkHashes: true,
+    });
 
-        // queue last 2 drive operations
-        await driveServer.addDriveOperations(driveName, drive.operations.global.slice(-2));
-
-        // retrieve new created document
-        document = (await driveServer.getDocument(
-            driveName,
-            docId
-        )) as ArbLtipGranteeDocument;
+    // gets document model for the document type
+    const documentType = (await baseDocument).documentType;
+    const documentModel = documentModels.find(
+        (d) => d.documentModel.id === documentType,
+    );
+    if (!documentModel) {
+        throw new Error(`Document model "${documentType}" is not supported`);
     }
 
+    // loads the document using the correct operation reducer
+    const document = await documentModel.utils.loadFromInput(file);
+    return document;
+}
 
-    document = arbReducer(
-        document,
-        arbActions.initGrantee({
-            authorizedSignerAddress: "0x1AD3d72e54Fb0eB46e87F82f77B284FC8a66b16C",
-            disbursementContractAddress: "0x1AD3d72e54Fb0eB46e87F82f77B284FC8a66b16C",
-            fundingAddress: "0x1AD3d72e54Fb0eB46e87F82f77B284FC8a66b16C",
-            fundingType: ["EOA"],
-            granteeName: "Frank",
-            grantSize: 1_000_000,
-            grantSummary: "arbitrum import script for powerhouse",
-            matchingGrantSize: 1_000_000,
-            metricsDashboardLink: "https://arbgrants.com",
-            startDate: "2024-06-12T12:00:00Z",
-            numberOfPhases: 1,
-            phaseDuration: 1
-        })
+async function pushDocument(
+    driveId: string,
+    documentId: string,
+    document: Document,
+    transmitter: SwitchboardPushTransmitter,
+) {
+    const operations = document.operations.global as OperationUpdate[];
+    console.log(`Pushing ${operations.length} operations...`);
+    console.time("Push time");
+    const results = await transmitter.transmit(
+        [
+            {
+                driveId,
+                documentId,
+                scope: "global",
+                branch: "main",
+                operations: document.operations.global.map(
+                    ({ scope, ...operation }) => operation,
+                ) as OperationUpdate[],
+                // TODO add signature
+            },
+        ],
+        { type: "local" },
     );
-
-    // create new operations with document model actions
-    // document = arbReducer(
-    //     document,
-    //     arbActions.addEditor({
-    //         editorAddress: "0x1AD3d72e54Fb0eB46e87F82f77B284FC8a66b16C"
-    //     })
-    // );
-
-    // queue new created operations for processing
-    const result = await driveServer.addOperations(driveName, docId, document.operations.global.slice(-2));
-    console.log(result.document?.state);
-
+    console.timeEnd("Push time");
+    return results.at(0);
 }
 
 async function main() {
-    // select document models
-    const documentModels = [
-        DocumentModelLib,
-        ...Object.values(DocumentModelsLibs)
-    ] as DocumentModel[];
+    const path = process.env.FILE_PATH;
+    if (!path) {
+        throw new Error("Path not provided");
+    }
+    const resolvedPath = Path.resolve(path);
+    try {
+        await fs.stat(resolvedPath);
+    } catch (e) {
+        console.error(`File not found at ${resolvedPath}`);
+        throw e;
+    }
 
-    // init drive server with document models
-    const driveServer = new DocumentDriveServer(documentModels);
-    await driveServer.initialize();
+    const name = process.env.FILE_NAME || Path.parse(path).name;
 
-    // if remote document drive is given init remote drive otherwise add local drive
-    const remoteDriveUrl = process.env.REMOTE_DOCUMENT_DRIVE ?? undefined
-    if (!remoteDriveUrl) {
+    const url = process.env.REMOTE_DOCUMENT_DRIVE ?? undefined;
+    if (!url) {
         throw new Error("Remote Drive not configured");
     }
 
-    const driveName = remoteDriveUrl.split("/")!.slice(-1)[0];
+    const drive = await requestPublicDrive(url);
 
-    if (!driveName) {
-        throw new Error("Could not extract drivename from remote Drive URL");
+    // build document from zip
+    console.log(`Loading document from ${resolvedPath}`);
+    console.time("Loading time");
+    const document = await loadZip(resolvedPath);
+    console.timeEnd("Loading time");
+    console.log(`Loaded ${document.operations.global.length} operations`);
+
+    // adds listener just for the drive itself
+    const listenerId = await PullResponderTransmitter.registerPullResponder(
+        drive.id,
+        url,
+        {
+            branch: ["main"],
+            documentId: ["*"],
+            documentType: ["powerhouse/document-drive"],
+            scope: ["global"],
+        },
+    );
+
+    // pulls the drive operations so we know the current index
+    console.log(`Pulling drive operations...`);
+    const strands = await PullResponderTransmitter.pullStrands(
+        drive.id,
+        url,
+        listenerId,
+    );
+    const driveStrand = strands.find(
+        (s) => s.driveId === drive.id && s.documentId === "",
+    );
+    if (!driveStrand) {
+        throw new Error("Couldn't get drive operations");
     }
 
-    let drive: DocumentDriveDocument;
-    drive = await driveServer.addRemoteDrive(remoteDriveUrl!, {
-        availableOffline: true, listeners: [
-            {
-                block: true,
-                callInfo: {
-                    data: remoteDriveUrl,
-                    name: 'switchboard-push',
-                    transmitterType: 'SwitchboardPush',
-                },
-                filter: {
-                    branch: ['main'],
-                    documentId: ['*'],
-                    documentType: ['*'],
-                    scope: ['global'],
-                },
-                label: 'Switchboard Sync',
-                listenerId: '1',
-                system: true,
+    // creates a transmitter to push operations to the drive
+    const pushTransmitter = new SwitchboardPushTransmitter(
+        {
+            driveId: drive.id,
+            listenerId: "",
+            block: true,
+            system: true,
+            filter: {} as any,
+            callInfo: {
+                data: url,
+                transmitterType: "SwitchboardPush",
+                name: drive.name,
             },
-        ], sharingType: "public", triggers: [], pullInterval: 100
-    });
+        },
+        {} as any,
+    );
 
-    driveServer.on("syncStatus", async (driveId, syncStatus) => {
-        if (driveId !== driveName || syncStatus !== "SUCCESS") {
-            return;
-        }
+    // generates add file operation
+    const id = generateUUID();
+    const initialDocument: Document = {
+        ...document.initialState,
+        initialState: document.initialState,
+        operations: {
+            global: [],
+            local: [],
+        },
+        clipboard: [],
+    };
+    const action = DriveUtils.generateAddNodeAction(
+        { nodes: [] } as unknown as DocumentDriveState,
+        {
+            id,
+            name,
+            documentType: document.documentType,
+            document: initialDocument,
+        },
+        ["global"],
+    );
 
-        await addFoldersAndDocuments(driveServer, driveName);
-    })
+    const operation = {
+        ...action,
+        index: driveStrand.operations.length,
+        timestamp: new Date().toISOString(),
+        hash: "",
+        skip: 0,
+        scope: undefined,
+    };
 
+    // pushes add file operation
+    const results = await pushTransmitter.transmit(
+        [
+            {
+                ...driveStrand,
+                operations: [operation],
+            },
+        ],
+        {
+            type: "local",
+        },
+    );
+
+    const result = results.at(0);
+    if (!result || result?.status !== "SUCCESS") {
+        console.error(
+            `${result ? `${result.status}: ` : ""}Couldn't push ADD_FILE operation!`,
+        );
+        throw result?.error;
+    }
+    console.log(`File "${name}" created on the drive`);
+
+    // pushes document operations
+    await pushDocument(drive.id, id, document, pushTransmitter);
+
+    if (!result || result?.status !== "SUCCESS") {
+        console.error(
+            `${result ? `${result.status}: ` : ""} Couldn't push document operations!`,
+        );
+        throw result?.error;
+    }
+    console.log(`Operations were pushed!`);
 }
 
 main();
