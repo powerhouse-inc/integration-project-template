@@ -145,7 +145,7 @@ async function main() {
     console.log(`Loaded ${document.operations.global.length} operations`);
 
     // small sleep to stabilize memory after document load
-    await setTimeout(100);
+    await setTimeout(500);
 
     // adds listener just for the drive itself
     const listenerId = await PullResponderTransmitter.registerPullResponder(
@@ -173,18 +173,24 @@ async function main() {
         throw new Error("Couldn't get drive operations");
     }
 
-    const driveDoc = driveStrand.operations.reduce(
-        (doc, operation) =>
-            reducer(doc, {
-                ...operation,
-                scope: "global",
-            } as Operation<DocumentDriveAction>),
-        DriveUtils.createDocument({
+    const driveDoc = utils.replayDocument(
+        DriveUtils.createExtendedState({
             state: {
                 global: drive,
                 local: {},
             },
         }),
+        {
+            global: driveStrand.operations.map(
+                (o) =>
+                    ({
+                        ...o,
+                        scope: "global",
+                    }) as Operation<DocumentDriveAction>,
+            ),
+            local: [],
+        },
+        reducer,
     );
 
     // creates a transmitter to push operations to the drive

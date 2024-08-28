@@ -5,7 +5,7 @@
     "description": "This repository contains everything to get started with document models and the document drives",
     "main": "dist/main.js",
     "scripts": {
-        "start": "vite-node --script src/main.ts",
+        "start": "vite-node --max-old-space-size=4096 --script src/main.ts",
         "dev": "vite-node --script src/main.ts",
         "test": "vitest"
     },
@@ -28,6 +28,7 @@
         "vite-node": "^1.6.0"
     },
     "devDependencies": {
+        "@types/node": "^22.5.1",
         "ts-node": "^10.9.2",
         "typescript": "^5.5.4"
     }
