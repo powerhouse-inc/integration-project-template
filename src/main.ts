@@ -6,6 +6,7 @@ import {
     ListenerRevision,
     OperationUpdate,
     PullResponderTransmitter,
+    StrandUpdate,
     SwitchboardPushTransmitter,
 } from "document-drive";
 import { requestPublicDrive } from "document-drive/utils/graphql";
@@ -19,6 +20,7 @@ import {
 import * as DocumentModelsLibs from "document-model-libs/document-models";
 import { utils, Document, Operation } from "document-model/document";
 import dotenv from "dotenv";
+import { logger, setLogger } from "document-drive/logger";
 
 dotenv.config();
 
@@ -58,6 +60,68 @@ async function loadZip(path: string) {
     return document;
 }
 
+function timeConversion(duration: number) {
+    const portions: string[] = [];
+
+    const msInHour = 1000 * 60 * 60;
+    const hours = Math.trunc(duration / msInHour);
+    if (hours > 0) {
+        portions.push(hours + "h");
+        duration = duration - hours * msInHour;
+    }
+
+    const msInMinute = 1000 * 60;
+    const minutes = Math.trunc(duration / msInMinute);
+    if (minutes > 0) {
+        portions.push(minutes + "m");
+        duration = duration - minutes * msInMinute;
+    }
+
+    const seconds = Math.trunc(duration / 1000);
+    if (seconds > 0) {
+        portions.push(seconds + "s");
+    }
+
+    return portions.join(" ");
+}
+
+async function pushChunk(
+    transmitter: SwitchboardPushTransmitter,
+    strand: Omit<StrandUpdate, "operations">,
+    chunk: Operation[],
+    retry = 0,
+) {
+    try {
+        const chunkResults = await transmitter.transmit(
+            [
+                {
+                    ...strand,
+                    operations: chunk.map((operation) => ({
+                        index: operation.index,
+                        skip: operation.skip,
+                        type: operation.type,
+                        id: operation.id,
+                        input: operation.input,
+                        hash: operation.hash,
+                        timestamp: operation.timestamp,
+                        context: operation.context,
+                    })) as OperationUpdate[],
+                    // TODO add signature
+                },
+            ],
+            { type: "local" },
+        );
+        return chunkResults;
+    } catch (e) {
+        const message = parseGraphQLError(e);
+        console.error(message || e);
+        const timeout = OPERATIONS_CHUNK_TIMEOUT * (retry * 2 + 1);
+        console.log(`Retrying in ${timeConversion(timeout)}...`);
+        await setTimeout(timeout);
+        return pushChunk(transmitter, strand, chunk, retry + 1);
+    }
+}
+
 async function pushDocument(
     driveId: string,
     documentId: string,
@@ -79,27 +143,16 @@ async function pushDocument(
         }
 
         console.time(`${i + chunk.length}/${operations.length}`);
-        const chunkResults = await transmitter.transmit(
-            [
-                {
-                    driveId,
-                    documentId,
-                    scope: "global",
-                    branch: "main",
-                    operations: chunk.map((operation) => ({
-                        index: operation.index,
-                        skip: operation.skip,
-                        type: operation.type,
-                        id: operation.id,
-                        input: operation.input,
-                        hash: operation.hash,
-                        timestamp: operation.timestamp,
-                        context: operation.context,
-                    })) as OperationUpdate[],
-                    // TODO add signature
-                },
-            ],
-            { type: "local" },
+
+        const chunkResults = await pushChunk(
+            transmitter,
+            {
+                driveId,
+                documentId,
+                scope: "global",
+                branch: "main",
+            },
+            chunk,
         );
         const error = chunkResults.find((r) => r.status === "ERROR");
         if (error) {
@@ -276,4 +329,35 @@ async function main() {
     console.log(`Operations were pushed!`);
 }
 
-main().catch(console.error);
+function parseGraphQLError(e: any): any | null {
+    function parseMessage(error: any): any | null {
+        return error && typeof error === "object" && "message" in error
+            ? error.message
+            : error;
+    }
+
+    if ("response" in e) {
+        const response = e.response;
+        if ("errors" in response) {
+            for (const error of response.errors as Array<unknown>) {
+                const message =
+                    error && typeof error === "object" && "message" in error
+                        ? error.message
+                        : error;
+                return parseMessage(error);
+            }
+        } else if ("error" in response) {
+            return parseMessage(response.error);
+        }
+    } else {
+        return undefined;
+    }
+}
+
+(logger.error = function (...data: any[]): void {
+    for (const e of data) {
+        const message = parseGraphQLError(e);
+        console.error(message || e);
+    }
+}),
+    main().catch(console.error);
