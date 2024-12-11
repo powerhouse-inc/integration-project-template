@@ -5,7 +5,8 @@
     "main": "dist/main.js",
     "scripts": {
         "dev": "vite-node src/main.ts",
-        "test": "vitest"
+        "test": "vitest",
+        "get-atlas-data": "bun run ./scripts/make-tree.ts"
     },
     "keywords": [
         "powerhouse",
@@ -26,6 +27,7 @@
         "vite-node": "^1.6.0"
     },
     "devDependencies": {
+        "@powerhousedao/mips-parser": "^2.2.0",
         "ts-node": "^10.9.2",
         "typescript": "^5.4.5"
     }
